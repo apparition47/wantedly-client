@@ -31,10 +31,7 @@ class PhotoDetailsTableViewController: UITableViewController {
 	}
 	
 	// MARK: IBAction
-	
-//	@IBAction func deleteButtonPressed(_ sender: Any) {
-//		presenter.deleteButtonPressed()
-//	}
+
 }
 
 // MARK: - PhotoDetailsView

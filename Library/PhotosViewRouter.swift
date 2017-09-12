@@ -33,10 +33,6 @@ class PhotosViewRouterImplementation: PhotosViewRouter {
         if let photoDetailsTableViewController = segue.destination as? PhotoDetailsTableViewController {
             photoDetailsTableViewController.configurator = PhotoDetailsConfiguratorImplementation(photo: photo)
         }
-//        else if let navigationController = segue.destination as? UINavigationController,
-//            let addBookViewController = navigationController.topViewController as? AddBookViewController {
-//            addBookViewController.configurator = AddBookConfiguratorImplementation(addBookPresenterDelegate: addBookPresenterDelegate)
-//        }
     }
     
 }

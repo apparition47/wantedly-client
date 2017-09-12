@@ -26,9 +26,6 @@ protocol PhotosPresenter {
     func configure(cell: PhotoCellView, forRow row: Int)
     func didSelect(row: Int)
     func didSearch(query: String)
-//    func titleForDeleteButton(row: Int) -> String
-//    func deleteButtonPressed(row: Int)
-//    func addButtonPressed()
 }
 
 class PhotosPresenterImplementation: PhotosPresenter {
@@ -103,45 +100,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
             }
         }
     }
-    
-//    func canEdit(row: Int) -> Bool {
-//        return true
-//    }
-    
-//    func titleForDeleteButton(row: Int) -> String {
-//        return "Delete Book"
-//    }
-    
-//    func deleteButtonPressed(row: Int) {
-//        view?.endEditing()
-//        
-//        let book = books[row]
-//        deleteBookUseCase.delete(book: book) { (result) in
-//            switch result {
-//            case .success():
-//                self.handleBookDeleted(book: book)
-//            case let .failure(error):
-//                self.handleBookDeleteError(error)
-//            }
-//        }
-//    }
-    
-//    func addButtonPressed() {
-//        router.presentAddBook(addBookPresenterDelegate: self)
-//    }
-    
-    // MARK: - AddBookPresenterDelegate
-    
-//    func addBookPresenter(_ presenter: AddBookPresenter, didAdd book: Book) {
-//        presenter.router.dismiss()
-//        books.append(book)
-//        view?.refreshBooksView()
-//    }
-    
-//    func addBookPresenterCancel(presenter: AddBookPresenter) {
-//        presenter.router.dismiss()
-//    }
-    
+
     // MARK: - Private
     
     fileprivate func handlePhotosReceived(_ photos: [Photo]) {
@@ -171,9 +130,4 @@ class PhotosPresenterImplementation: PhotosPresenter {
         self.photos = photos
         view?.refreshPhotosView()
     }
-    
-//    fileprivate func handleBookDeleteError(_ error: Error) {
-//        // Here we could check the error code and display a localized error message
-//        view?.displayBookDeleteError(title: "Error", message: error.localizedDescription)
-//    }
 }

@@ -19,7 +19,7 @@ class CachePhotosGateway: PhotosGateway {
         self.apiPhotosGateway = apiPhotosGateway
     }
     
-    // MARK: - BooksGateway
+    // MARK: - PhotosGateway
     
     func fetchPhotos(parameters: FetchPhotosParameters, completionHandler: @escaping FetchPhotosEntityGatewayCompletionHandler) {
         apiPhotosGateway.fetchPhotos(parameters: parameters) { (result) in

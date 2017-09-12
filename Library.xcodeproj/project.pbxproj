@@ -40,16 +40,6 @@
 		739827F51F57022600730BE6 /* ApiPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739827F41F57022600730BE6 /* ApiPhoto.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2FC6C4831E60B542005539F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2FC6C4631E60B542005539F5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2FC6C46A1E60B542005539F5;
-			remoteInfo = Library;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2F3D6B7F1E61A37400CF7881 /* UIViewController-Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-Alert.swift"; sourceTree = "<group>"; };
 		2F3D6B831E61C76E00CF7881 /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
@@ -61,7 +51,6 @@
 		2FC6C4781E60B542005539F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FC6C47B1E60B542005539F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FC6C47D1E60B542005539F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FC6C4821E60B542005539F5 /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC6C4961E60B5C4005539F5 /* ViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		2FC6C4A21E60B65E005539F5 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		733239621F52C31800E9AC7B /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
@@ -95,13 +84,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2FC6C47F1E60B542005539F5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -117,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				2FC6C46B1E60B542005539F5 /* Library.app */,
-				2FC6C4821E60B542005539F5 /* LibraryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,24 +274,6 @@
 			productReference = 2FC6C46B1E60B542005539F5 /* Library.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2FC6C4811E60B542005539F5 /* LibraryTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2FC6C48E1E60B542005539F5 /* Build configuration list for PBXNativeTarget "LibraryTests" */;
-			buildPhases = (
-				2FC6C47E1E60B542005539F5 /* Sources */,
-				2FC6C47F1E60B542005539F5 /* Frameworks */,
-				2FC6C4801E60B542005539F5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2FC6C4841E60B542005539F5 /* PBXTargetDependency */,
-			);
-			name = LibraryTests;
-			productName = LibraryTests;
-			productReference = 2FC6C4821E60B542005539F5 /* LibraryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -324,11 +287,6 @@
 					2FC6C46A1E60B542005539F5 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
-					};
-					2FC6C4811E60B542005539F5 = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 2FC6C46A1E60B542005539F5;
 					};
 				};
 			};
@@ -346,7 +304,6 @@
 			projectRoot = "";
 			targets = (
 				2FC6C46A1E60B542005539F5 /* Library */,
-				2FC6C4811E60B542005539F5 /* LibraryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -359,13 +316,6 @@
 				2FC6C47C1E60B542005539F5 /* LaunchScreen.storyboard in Resources */,
 				2FC6C4791E60B542005539F5 /* Assets.xcassets in Resources */,
 				2FC6C4741E60B542005539F5 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2FC6C4801E60B542005539F5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,22 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2FC6C47E1E60B542005539F5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2FC6C4841E60B542005539F5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2FC6C46A1E60B542005539F5 /* Library */;
-			targetProxy = 2FC6C4831E60B542005539F5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2FC6C4721E60B542005539F5 /* Main.storyboard */ = {
@@ -561,34 +496,6 @@
 			};
 			name = Release;
 		};
-		2FC6C48F1E60B542005539F5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = LibraryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ro.fortech.LibraryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Library.app/Library";
-			};
-			name = Debug;
-		};
-		2FC6C4901E60B542005539F5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = LibraryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ro.fortech.LibraryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Library.app/Library";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -606,15 +513,6 @@
 			buildConfigurations = (
 				2FC6C48C1E60B542005539F5 /* Debug */,
 				2FC6C48D1E60B542005539F5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2FC6C48E1E60B542005539F5 /* Build configuration list for PBXNativeTarget "LibraryTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2FC6C48F1E60B542005539F5 /* Debug */,
-				2FC6C4901E60B542005539F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
