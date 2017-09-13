@@ -7,31 +7,35 @@
 //
 
 import Foundation
+import Decodable
+import Alamofire
 
 protocol ApiRequest {
     var baseUrl: String { get }
     var path: String { get }
-    var httpMethod: String { get }
+    var method: HTTPMethod { get }
     var parameters: [String: Any]? { get }
     var headers: [String: String]? { get }
-    var urlRequest: URLRequest { get }
-    var responseKeyPath: [String] { get }
+//    var urlRequest: URLRequest { get }
+    static var responseKeyPath: [String] { get }
+    associatedtype ResponseType
+    static func parse(fromJson json: Any) -> Result<ResponseType>
 }
 
 extension ApiRequest {
     var baseUrl: String {
-        return "api.unsplash.com"
+        return "https://api.unsplash.com"
     }
     
     var path: String {
         return "/"
     }
     
-    var httpMethod: String {
-        return "GET"
+    var method: HTTPMethod {
+        return HTTPMethod.get
     }
     
-    var responseKeyPath: [String] {
+    static var responseKeyPath: [String] {
         return []
     }
     
@@ -39,33 +43,29 @@ extension ApiRequest {
         return nil
     }
     
-    var urlRequest: URLRequest {
-        let urlComponents = NSURLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = baseUrl
-        urlComponents.path = path
-        
-        if let parameters = parameters, httpMethod == "GET" {
-            urlComponents.queryItems = []
-            for param in parameters.keys {
-                urlComponents.queryItems!.append(URLQueryItem(name: param, value: "\(String(describing: parameters[param]!))"))
-            }
+    static func parse(fromJson json: Any) -> Result<ResponseType> {
+        guard let value = json as? ResponseType else {
+            return .failure(NSError.createParseError())
         }
-        
-        var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = httpMethod
-        request.httpBody = parameters?.toJsonData()
-        
-        if let headers = headers {
-            for key: String in headers.keys {
-                request.setValue(headers[key], forHTTPHeaderField: key)
-            }
-        }
+        return .success(value)
+    }
+}
 
-        // Unsplash API
-        request.setValue("Client-ID \(unsplashAppId)", forHTTPHeaderField: "Authorization")
-        request.setValue("v1", forHTTPHeaderField: "Accept-Version")
-        
-        return request
+extension ApiRequest where ResponseType: Decodable {
+    static func parse(fromJson json: Any) -> Result<ResponseType> {
+        do {
+            let value = try ResponseType.decode(json)
+            return .success(value)
+        } catch(let error) {
+            return .failure(error)
+        }
+    }
+}
+
+extension NSError {
+    static func createParseError() -> NSError {
+        return NSError(domain: "com.onefatgiraffe.library",
+                       code: 999,
+                       userInfo: [NSLocalizedDescriptionKey: "A parsing error occured"])
     }
 }

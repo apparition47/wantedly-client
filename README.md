@@ -6,7 +6,8 @@ Unsplash photo viewer using [Clean architecture](https://8thlight.com/blog/uncle
 
 ## Usage
 
-In `Constants.swift`, enter your [Unsplash Application ID](https://unsplash.com/oauth/applications).
+1. Cocoapods `pod install`
+2. In `Constants.swift`, enter your [Unsplash Application ID](https://unsplash.com/oauth/applications).
 
 ```Swift
 let unsplashAppId = "Unsplash Application ID Here"

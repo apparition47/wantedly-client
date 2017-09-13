@@ -26,12 +26,12 @@ class ApiPhotosGatewayImplementation: ApiPhotosGateway {
     
     func fetchPhotos(parameters: FetchPhotosParameters, completionHandler: @escaping FetchPhotosEntityGatewayCompletionHandler) {
         let photosApiRequest = GetPhotosApiRequest(fetchPhotosParameters: parameters)
-        apiClient.execute(request: photosApiRequest) { (result: Result<ApiResponse<[ApiPhoto]>>) in
+        apiClient.execute(photosApiRequest) { result in
+            
             switch result {
-            case let .success(response):
-                let photos = response.entity.map { return $0.photo }
-                completionHandler(.success(photos))
-            case let .failure(error):
+            case .success(let response):
+                completionHandler(.success(response.array))
+            case .failure(let error):
                 completionHandler(.failure(error))
             }
         }
@@ -39,11 +39,10 @@ class ApiPhotosGatewayImplementation: ApiPhotosGateway {
     
     func search(parameters: SearchPhotosParameters, completionHandler: @escaping SearchPhotosEntityGatewayCompletionHandler) {
         let photosApiRequest = SearchPhotosApiRequest(searchPhotosParameters: parameters)
-        apiClient.execute(request: photosApiRequest) { (result: Result<ApiResponse<[ApiPhoto]>>) in
+        apiClient.execute(photosApiRequest) { (result: Result<SearchPhotosApiRequest.ResponseType>) in
             switch result {
             case let .success(response):
-                let photos = response.entity.map { return $0.photo }
-                completionHandler(.success(photos))
+                completionHandler(.success(response.array))
             case let .failure(error):
                 completionHandler(.failure(error))
             }

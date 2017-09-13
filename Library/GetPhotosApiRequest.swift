@@ -12,10 +12,10 @@ struct GetPhotosApiRequest: ApiRequest {
     let fetchPhotosParameters: FetchPhotosParameters
     
     let path: String = "/photos"
-    let httpMethod: String = "GET"
     var parameters: [String: Any]? {
         return fetchPhotosParameters.toDictionary()
     }
+    typealias ResponseType = DecodableArray<Photo>
 }
 
 extension FetchPhotosParameters {

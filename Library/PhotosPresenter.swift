@@ -79,7 +79,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
         formatter.locale = Locale(identifier: "ja_JP")
         cell.display(createdAt: formatter.string(from: photo.createdAt))
         
-        cell.display(username: photo.username!)
+        cell.display(username: photo.username ?? "")
         cell.display(thumbnailUrl: photo.urls.thumb)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Decodable
 
 struct Photo {
     let id: String
@@ -27,10 +28,40 @@ func == (lhs: Photo, rhs: Photo) -> Bool {
     return lhs.id == rhs.id
 }
 
+extension Photo: Decodable {
+    static func decode(_ json: Any) throws -> Photo {
+        
+        return try Photo(
+            id: json => "id",
+            createdAt: json => "created_at",
+            updatedAt: json => "updated_at",
+            width: json => "width",
+            height: json => "height",
+            colour: json => "color",
+            likes: json => "likes",
+            description: json =>? "description",
+            username: json =>? "username",
+            urls: json => "urls"
+        )
+    }
+}
+
 struct PhotoUrl {
     let raw: String
     let full: String
     let regular: String
     let small: String
     let thumb: String
+}
+
+extension PhotoUrl: Decodable {
+    static func decode(_ json: Any) throws -> PhotoUrl {
+        return try PhotoUrl(
+            raw: json => "raw",
+            full: json => "full",
+            regular: json => "regular",
+            small: json => "small",
+            thumb: json => "thumb"
+        )
+    }
 }

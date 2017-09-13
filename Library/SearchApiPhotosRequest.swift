@@ -7,17 +7,18 @@
 //
 
 import Foundation
+import Alamofire
 
 struct SearchPhotosApiRequest: ApiRequest {
+    typealias ResponseType = DecodableArray<Photo>
+
     let searchPhotosParameters: SearchPhotosParameters
     
     let path: String = "/search/photos"
-    let httpMethod: String = "GET"
     var parameters: [String: Any]? {
         return searchPhotosParameters.toDictionary()
     }
-    // TODO use Decodable for keypathing
-//    var responseKeyPath: [String] = ["results"]
+    static let responseKeyPath: [String] = ["results"]
 }
 
 extension SearchPhotosParameters {

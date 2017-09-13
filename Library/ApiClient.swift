@@ -1,34 +1,17 @@
 //
-//  ApiClient.swift
+//  ApiRequest.swift
 //  Library
 //
-//  Created by Cosmin Stirbu on 2/25/17.
-//  MIT License
+//  Created by Aaron Lee on 2017/09/13.
+//  Copyright © 2017 One Fat Giraffe. All rights reserved.
 //
-//  Copyright (c) 2017 Fortech
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
 
 import Foundation
+import Decodable
+import Alamofire
 
 protocol ApiClient {
-	func execute<T: InitializableWithData>(request: ApiRequest, completionHandler: @escaping (_ result: Result<ApiResponse<T>>) -> Void)
+    func execute<T: ApiRequest>(_ request: T, completion: @escaping (Result<T.ResponseType>) -> ())
 }
 
 protocol URLSessionProtocol {
@@ -38,39 +21,68 @@ protocol URLSessionProtocol {
 extension URLSession: URLSessionProtocol { }
 
 class ApiClientImplementation: ApiClient {
+
+    private let sessionManager: Alamofire.SessionManager = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 10
+        return Alamofire.SessionManager(configuration:config)
+    }()
+    
 	let urlSession: URLSessionProtocol
 	
 	init(urlSessionConfiguration: URLSessionConfiguration, completionHandlerQueue: OperationQueue) {
 		urlSession = URLSession(configuration: urlSessionConfiguration, delegate: nil, delegateQueue: completionHandlerQueue)
 	}
 	
-	// This should be used mainly for testing purposes
 	init(urlSession: URLSessionProtocol) {
 		self.urlSession = urlSession
 	}
 	
 	// MARK: - ApiClient
-	
-	func execute<T: InitializableWithData>(request: ApiRequest, completionHandler: @escaping (Result<ApiResponse<T>>) -> Void) {
+
+    func execute<T: ApiRequest>(_ request: T, completion: @escaping (Result<T.ResponseType>) -> ()) {
         
-		let dataTask = urlSession.dataTask(with: request.urlRequest) { (data, response, error) in
-			guard let httpUrlResponse = response as? HTTPURLResponse else {
-				completionHandler(.failure(NetworkRequestError(error: error)))
-				return
-			}
-			
-			let successRange = 200...299
-			if successRange.contains(httpUrlResponse.statusCode) {
-				do {
-                    let response = try ApiResponse<T>(data: data, httpUrlResponse: httpUrlResponse)
-					completionHandler(.success(response))
-				} catch {
-					completionHandler(.failure(error))
-				}
-			} else {
-				completionHandler(.failure(ApiError(data: data, httpUrlResponse: httpUrlResponse)))
-			}
-		}
-		dataTask.resume()
-	}
+        var headers = [String: String]()
+        headers["Authorization"] = "Client-ID \(unsplashAppId)"
+        headers["Accept-Version"] = "v1"
+        
+        let urlString = request.baseUrl + request.path
+        
+        sessionManager
+            .request(urlString, method: request.method, parameters: request.parameters, encoding: URLEncoding.default, headers: headers)
+            .validate(statusCode: 200...299)
+            .responseJSON { response in
+                
+                switch response.result {
+                case .success(let json):
+                    if T.responseKeyPath.count > 0 {
+                        do {
+                            let j = try json => KeyPath(T.responseKeyPath)
+                            completion(T.parse(fromJson: j))
+                        } catch(let error) {
+                            completion(.failure(error))
+                        }
+                    } else {
+                        completion(T.parse(fromJson: json))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+        }
+    }
+
+}
+
+struct DecodableArray<T: Decodable>: Decodable {
+    typealias Element = T
+    
+    private(set) var array: [Element] = []
+    
+    init(_ array: [Element]) {
+        self.array = array
+    }
+    
+    static func decode(_ json: Any) throws -> DecodableArray<Element> {
+        return DecodableArray(try [Element].decode(json))
+    }
 }
