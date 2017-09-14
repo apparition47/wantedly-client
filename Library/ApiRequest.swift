@@ -16,7 +16,6 @@ protocol ApiRequest {
     var method: HTTPMethod { get }
     var parameters: [String: Any]? { get }
     var headers: [String: String]? { get }
-//    var urlRequest: URLRequest { get }
     static var responseKeyPath: [String] { get }
     associatedtype ResponseType
     static func parse(fromJson json: Any) -> Result<ResponseType>

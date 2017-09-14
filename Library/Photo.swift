@@ -18,7 +18,7 @@ struct Photo {
     let colour: String
     let likes: Int
     let description: String?
-    let username: String?
+    let username: String
     let urls: PhotoUrl
 }
 
@@ -40,7 +40,7 @@ extension Photo: Decodable {
             colour: json => "color",
             likes: json => "likes",
             description: json =>? "description",
-            username: json =>? "username",
+            username: json => "user" => "username",
             urls: json => "urls"
         )
     }

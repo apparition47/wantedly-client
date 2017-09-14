@@ -39,23 +39,14 @@ class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
 	
 	func viewDidLoad() {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         view?.display(createdAt: formatter.string(from: photo.createdAt))
         view?.display(updatedAt: formatter.string(from: photo.updatedAt))
         
         view?.display(dimensions: "\(photo.width) by \(photo.height)")
         view?.display(likes: "\(photo.likes)")
         view?.display(description: photo.description ?? "なし")
-        view?.display(username: photo.username ?? "山田タロウ")
+        view?.display(username: photo.username)
         view?.display(largePhotoUrl: photo.urls.regular)
-	}
-	
-	// MARK: - Private
-	
-	fileprivate func handleBookDeleted() {
-		// Here we could use a similar approach like on AddBookViewController and call a delegate like we do when adding a book
-		// However we want to provide a different example - depending on the complexity of you particular case
-		// You can chose one way or the other
-		router.dismissView()
 	}
 }

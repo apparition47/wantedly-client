@@ -28,10 +28,9 @@ class PhotoDetailsTableViewController: UITableViewController {
 		
 		configurator.configure(photoDetailsTableViewController: self)
 		presenter.viewDidLoad()
+        
+        tableView.allowsSelection = false
 	}
-	
-	// MARK: IBAction
-
 }
 
 // MARK: - PhotoDetailsView

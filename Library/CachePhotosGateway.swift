@@ -40,7 +40,7 @@ class CachePhotosGateway: PhotosGateway {
         case .success(_):
             completionHandler(result)
         case .failure(_):
-            break
+            completionHandler(result)
         }
     }
     
@@ -49,7 +49,7 @@ class CachePhotosGateway: PhotosGateway {
         case .success(_):
             completionHandler(result)
         case .failure(_):
-            break
+            completionHandler(result)
         }
     }
     

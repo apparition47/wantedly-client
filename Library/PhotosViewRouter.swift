@@ -15,14 +15,13 @@ protocol PhotosViewRouter: ViewRouter {
 
 class PhotosViewRouterImplementation: PhotosViewRouter {
     fileprivate weak var photosCollectionViewController: PhotosCollectionViewController?
-//    fileprivate weak var addBookPresenterDelegate: AddBookPresenterDelegate?
     fileprivate var photo: Photo!
     
     init(photosCollectionViewController: PhotosCollectionViewController) {
         self.photosCollectionViewController = photosCollectionViewController
     }
     
-    // MARK: - BooksViewRouter
+    // MARK: - PhotosViewRouter
     
     func presentDetailsView(for photo: Photo) {
         self.photo = photo

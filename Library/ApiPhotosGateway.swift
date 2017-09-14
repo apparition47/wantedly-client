@@ -1,5 +1,5 @@
 //
-//  ApiBooksGateway.swift
+//  ApiPhotosGateway.swift
 //  Library
 //
 //  Created by Aaron Lee on 2017/09/02.

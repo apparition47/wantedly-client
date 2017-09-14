@@ -76,10 +76,9 @@ class PhotosPresenterImplementation: PhotosPresenter {
         let photo = photos[row]
         
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "yyyy-MM-dd"
         cell.display(createdAt: formatter.string(from: photo.createdAt))
-        
-        cell.display(username: photo.username ?? "")
+        cell.display(username: photo.username)
         cell.display(thumbnailUrl: photo.urls.thumb)
     }
     
