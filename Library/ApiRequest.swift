@@ -7,8 +7,10 @@
 //
 
 import Foundation
-import Decodable
 import Alamofire
+import protocol Decodable.Decodable
+import enum Decodable.DecodingError
+import struct Decodable.KeyPath
 
 protocol ApiRequest {
     var baseUrl: String { get }

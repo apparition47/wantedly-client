@@ -7,8 +7,11 @@
 //
 
 import Foundation
-import Decodable
 import Alamofire
+import Decodable
+import protocol Decodable.Decodable
+import enum Decodable.DecodingError
+import struct Decodable.KeyPath
 
 protocol ApiClient {
     func execute<T: ApiRequest>(_ request: T, completion: @escaping (Result<T.ResponseType>) -> ())

@@ -8,6 +8,9 @@
 
 import Foundation
 import Decodable
+import protocol Decodable.Decodable
+import enum Decodable.DecodingError
+import struct Decodable.KeyPath
 
 struct Photo {
     let id: String

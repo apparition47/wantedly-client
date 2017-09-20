@@ -8,7 +8,7 @@
 
 ## Usage
 
-Tested with Xcode 8.3, Swift 3.2.
+Tested with Xcode 9, Swift 4.
 
 1. [CocoaPods](https://cocoapods.org) `$ pod install`
 2. In `Constants.swift`, enter your [Unsplash Application ID](https://unsplash.com/oauth/applications).
