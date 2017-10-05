@@ -45,6 +45,8 @@ class ApiClientImplementation: ApiClient {
 
     func execute<T: ApiRequest>(_ request: T, completion: @escaping (Result<T.ResponseType>) -> ()) {
         
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         var headers = [String: String]()
         headers["Authorization"] = "Client-ID \(unsplashAppId)"
         headers["Accept-Version"] = "v1"
@@ -55,6 +57,8 @@ class ApiClientImplementation: ApiClient {
             .request(urlString, method: request.method, parameters: request.parameters, encoding: URLEncoding.default, headers: headers)
             .validate(statusCode: 200...299)
             .responseJSON { response in
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
                 switch response.result {
                 case .success(let json):

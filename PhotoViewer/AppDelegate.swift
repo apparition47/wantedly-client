@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SWHttpTrafficRecorder
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+        
+        #if DEBUG
+            if let sharedRecorder = SWHttpTrafficRecorder.shared() {
+                sharedRecorder.recordingFormat = SWHTTPTrafficRecordingFormat.bodyOnly
+                sharedRecorder.progressDelegate = self
+                sharedRecorder.startRecording()
+            }
+        #endif
+        
 		return true
 	}
 
@@ -42,5 +51,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Saves changes in the application's managed object context before the application terminates.
 //		coreDataStack.saveContext()
 	}
+    
+
 }
 
+// MARK: - SWHttpTrafficRecorder
+extension AppDelegate: SWHttpTrafficRecordingProgressDelegate {
+    func updateRecordingProgress(_ currentProgress: SWHTTPTrafficRecordingProgressKind, userInfo info: [AnyHashable : Any]! = [:]) {
+        guard let request = info[SWHTTPTrafficRecordingProgressRequestKey] as? NSURLRequest, let urlString = request.url?.absoluteString else {
+            return
+        }
+        
+        let progress =  ["Received","Skipped","Started","Loaded","Recorded", "FailedToLoad", "FailedToRecord"][currentProgress.rawValue-1]
+        
+        if let path = info[SWHTTPTrafficRecordingProgressFilePathKey] as? String{
+            print("Progress:\(progress), request: \(urlString) at \(path)")
+        } else {
+            print("Progress:\(progress), request: \(urlString)")
+        }
+    }
+}
