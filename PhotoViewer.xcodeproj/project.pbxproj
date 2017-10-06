@@ -15,7 +15,6 @@
 		2FC6C47C1E60B542005539F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC6C47A1E60B542005539F5 /* LaunchScreen.storyboard */; };
 		2FC6C4981E60B5C4005539F5 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6C4961E60B5C4005539F5 /* ViewRouter.swift */; };
 		2FC6C4A31E60B65E005539F5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6C4A21E60B65E005539F5 /* Result.swift */; };
-		3C0E43D3BAE7CCAB8DF6DAE7 /* Pods_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C9B2CDA63A29FC8790DB88 /* Pods_Library.framework */; };
 		733239631F52C31800E9AC7B /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239621F52C31800E9AC7B /* PhotosCollectionViewController.swift */; };
 		733239651F52C39900E9AC7B /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239641F52C39900E9AC7B /* PhotosPresenter.swift */; };
 		733239671F52CA6700E9AC7B /* PhotosViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239661F52CA6700E9AC7B /* PhotosViewRouter.swift */; };
@@ -51,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1959B57867081F3BEFD57461 /* Pods-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		22C9B2CDA63A29FC8790DB88 /* Pods_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3D6B7F1E61A37400CF7881 /* UIViewController-Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-Alert.swift"; sourceTree = "<group>"; };
 		2F3D6B851E61D0AC00CF7881 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 		739827F21F56FF2B00730BE6 /* ApiPhotosGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiPhotosGateway.swift; sourceTree = "<group>"; };
 		ACE2C8C3185F48745A2137E6 /* Pods_PhotoViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD8C620E323027218663634 /* Pods-PhotoViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.release.xcconfig"; sourceTree = "<group>"; };
-		DB86FF14DF10906DF1789C47 /* Pods-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.release.xcconfig"; sourceTree = "<group>"; };
 		F4BF3485FCC1F67DEBBB4957 /* Pods-PhotoViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C0E43D3BAE7CCAB8DF6DAE7 /* Pods_Library.framework in Frameworks */,
 				9BF32FD7C7B9D8DB559879F6 /* Pods_PhotoViewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,8 +111,6 @@
 		1F51DD334DD488221415EF6A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1959B57867081F3BEFD57461 /* Pods-Library.debug.xcconfig */,
-				DB86FF14DF10906DF1789C47 /* Pods-Library.release.xcconfig */,
 				F4BF3485FCC1F67DEBBB4957 /* Pods-PhotoViewer.debug.xcconfig */,
 				BBD8C620E323027218663634 /* Pods-PhotoViewer.release.xcconfig */,
 			);
@@ -662,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(PROJECT_DIR)/$(PROJECT_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.onefatgiraffe.Library;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onefatgiraffe.PhotoViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -676,7 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(PROJECT_DIR)/$(PROJECT_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.onefatgiraffe.Library;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onefatgiraffe.PhotoViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
