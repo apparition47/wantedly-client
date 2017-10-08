@@ -1,6 +1,6 @@
 //
 //  UIViewController-Alert.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Cosmin Stirbu on 2/25/17.
 //  MIT License

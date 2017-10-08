@@ -1,6 +1,6 @@
 //
 //  PhotoDetailsPresenter.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/09/02.
 //  Copyright © 2017 One Fat Giraffe. All rights reserved.
@@ -17,6 +17,7 @@ protocol PhotoDetailsView: class {
     func display(description: String)
     func display(username: String)
     func display(largePhotoUrl: String)
+    func display(dominantObject: String)
 }
 
 protocol PhotoDetailsPresenter {
@@ -26,13 +27,16 @@ protocol PhotoDetailsPresenter {
 
 class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
 	fileprivate let photo: Photo
+    fileprivate let detectPhotoUseCase: DetectPhotoUseCase
 	let router: PhotoDetailsViewRouter
 	fileprivate weak var view: PhotoDetailsView?
 	
 	init(view: PhotoDetailsView,
+         detectPhotoUseCase: DetectPhotoUseCase,
 	     photo: Photo,
 	     router: PhotoDetailsViewRouter) {
 		self.view = view
+        self.detectPhotoUseCase = detectPhotoUseCase
 		self.photo = photo
 		self.router = router
 	}
@@ -48,5 +52,17 @@ class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
         view?.display(description: photo.description ?? "なし")
         view?.display(username: photo.username)
         view?.display(largePhotoUrl: photo.urls.regular)
+        
+        let params = DetectPhotoParameters(photoUrl: photo.urls.small)
+        self.detectPhotoUseCase.detectDominant(parameters: params) { [unowned self] result in
+            switch result {
+            case .success(let cat):
+                DispatchQueue.main.async {
+                    self.view?.display(dominantObject: cat)
+                }
+            case .failure:
+                break
+            }
+        }
 	}
 }

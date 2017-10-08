@@ -20,7 +20,8 @@ class PhotoDetailsTableViewController: UITableViewController {
     @IBOutlet weak var dimensionsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var photo: UIImageView!
-	
+    @IBOutlet weak var dominantObjectLabel: UILabel!
+    
 	// MARK: - UIViewController
 	
 	override func viewDidLoad() {
@@ -64,4 +65,7 @@ extension PhotoDetailsTableViewController: PhotoDetailsView {
         photo.loadImageUsingCache(withUrl: largePhotoUrl)
     }
 
+    func display(dominantObject: String) {
+        dominantObjectLabel.text = dominantObject
+    }
 }

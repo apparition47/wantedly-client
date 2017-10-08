@@ -4,14 +4,15 @@
 
 ## Description
 
-[Unsplash](https://unsplash.com) photo viewer using [Clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html).
+[Unsplash](https://unsplash.com) photo viewer using [Clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html). Uses Core ML, Vision and [Inception Core ML Model](https://developer.apple.com/machine-learning/) to detect the dominant object in the photo.
 
 ## Usage
 
-Tested with Xcode 9, Swift 4.
+Tested with Xcode 9, iOS 11.
 
 1. [CocoaPods](https://cocoapods.org) `$ pod install`
-2. In `Constants.swift`, enter your [Unsplash Application ID](https://unsplash.com/oauth/applications).
+2. Download *Inception v3* `$ curl https://docs-assets.developer.apple.com/coreml/models/Inceptionv3.mlmodel > PhotoViewer/Inceptionv3.mlmodel`
+3. In `Constants.swift`, enter your [Unsplash Application ID](https://unsplash.com/oauth/applications).
 
 ```Swift
 let unsplashAppId = "Unsplash Application ID Here"

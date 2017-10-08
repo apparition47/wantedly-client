@@ -1,6 +1,6 @@
 //
 //  PhotosConfigurator.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/08/27.
 //  Copyright © 2017 One Fat Giraffe. All rights reserved.
@@ -18,8 +18,9 @@ class PhotosConfiguratorImplementation: PhotosConfigurator {
         let apiClient = ApiClientImplementation(urlSessionConfiguration: URLSessionConfiguration.default,
                                                 completionHandlerQueue: OperationQueue.main)
         let apiPhotosGateway = ApiPhotosGatewayImplementation(apiClient: apiClient)
+        let mlGateway = MLGatewayImplementation()
         
-        let photosGateway = CachePhotosGateway(apiPhotosGateway: apiPhotosGateway)
+        let photosGateway = CachePhotosGateway(apiPhotosGateway: apiPhotosGateway, mlGateway: mlGateway)
         
         let fetchPhotosUseCase = GetPhotosUseCaseImplementation(photosGateway: photosGateway)
         let searchPhotosUseCase = SearchPhotosUseCaseImplementation(photosGateway: photosGateway)

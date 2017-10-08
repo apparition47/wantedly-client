@@ -1,6 +1,6 @@
 //
 //  PhotosPresenter.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/08/27.
 //  Copyright © 2017 One Fat Giraffe. All rights reserved.

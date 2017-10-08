@@ -1,6 +1,6 @@
 //
 //  ViewRouter.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Cosmin Stirbu on 2/23/17.
 //  MIT License

@@ -15,6 +15,8 @@
 		2FC6C47C1E60B542005539F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC6C47A1E60B542005539F5 /* LaunchScreen.storyboard */; };
 		2FC6C4981E60B5C4005539F5 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6C4961E60B5C4005539F5 /* ViewRouter.swift */; };
 		2FC6C4A31E60B65E005539F5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6C4A21E60B65E005539F5 /* Result.swift */; };
+		7306ED671F890B12006E6C4E /* DetectPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7306ED661F890B12006E6C4E /* DetectPhoto.swift */; };
+		732E25731F89F63B006EE4D1 /* MLGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732E25721F89F63B006EE4D1 /* MLGateway.swift */; };
 		733239631F52C31800E9AC7B /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239621F52C31800E9AC7B /* PhotosCollectionViewController.swift */; };
 		733239651F52C39900E9AC7B /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239641F52C39900E9AC7B /* PhotosPresenter.swift */; };
 		733239671F52CA6700E9AC7B /* PhotosViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239661F52CA6700E9AC7B /* PhotosViewRouter.swift */; };
@@ -29,6 +31,7 @@
 		7333A3EC1F5AD45F00996C84 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */; };
 		734BA0FF1F5C03A00006B3D4 /* CachePhotosGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734BA0FE1F5C03A00006B3D4 /* CachePhotosGateway.swift */; };
 		7370A2261F682B400062C4F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370A2251F682B400062C4F9 /* Constants.swift */; };
+		737D15FD1F88FF8000C268DE /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */; };
 		737FF4111F585CF3007329B2 /* SearchPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737FF4101F585CF3007329B2 /* SearchPhotos.swift */; };
 		73880E0B1F8670FA005E24FB /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73880E0A1F8670FA005E24FB /* Tests.swift */; };
 		738F744A1F5A936900C2D586 /* UIImageView+CacheFromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738F74491F5A936900C2D586 /* UIImageView+CacheFromUrl.swift */; };
@@ -61,6 +64,8 @@
 		2FC6C47D1E60B542005539F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FC6C4961E60B5C4005539F5 /* ViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		2FC6C4A21E60B65E005539F5 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7306ED661F890B12006E6C4E /* DetectPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectPhoto.swift; sourceTree = "<group>"; };
+		732E25721F89F63B006EE4D1 /* MLGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLGateway.swift; sourceTree = "<group>"; };
 		733239621F52C31800E9AC7B /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		733239641F52C39900E9AC7B /* PhotosPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
 		733239661F52CA6700E9AC7B /* PhotosViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewRouter.swift; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 		7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		734BA0FE1F5C03A00006B3D4 /* CachePhotosGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachePhotosGateway.swift; sourceTree = "<group>"; };
 		7370A2251F682B400062C4F9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		737FF4101F585CF3007329B2 /* SearchPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPhotos.swift; sourceTree = "<group>"; };
 		73880E081F8670FA005E24FB /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73880E0A1F8670FA005E24FB /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 		2FC6C4911E60B586005539F5 /* EntityGateway */ = {
 			isa = PBXGroup;
 			children = (
+				732E25701F89F105006EE4D1 /* ML */,
 				2FC6C49B1E60B603005539F5 /* API */,
 				2FC6C4991E60B5EA005539F5 /* Cache */,
 			);
@@ -226,6 +233,7 @@
 			children = (
 				739827EC1F56EBDB00730BE6 /* GetPhotos.swift */,
 				737FF4101F585CF3007329B2 /* SearchPhotos.swift */,
+				7306ED661F890B12006E6C4E /* DetectPhoto.swift */,
 			);
 			name = UseCases;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 		2FC6C4AF1E60B73A005539F5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -260,6 +269,22 @@
 				7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */,
 			);
 			name = Requests;
+			sourceTree = "<group>";
+		};
+		732E25701F89F105006EE4D1 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				732E25711F89F61F006EE4D1 /* Gateways */,
+			);
+			name = ML;
+			sourceTree = "<group>";
+		};
+		732E25711F89F61F006EE4D1 /* Gateways */ = {
+			isa = PBXGroup;
+			children = (
+				732E25721F89F63B006EE4D1 /* MLGateway.swift */,
+			);
+			name = Gateways;
 			sourceTree = "<group>";
 		};
 		734DB4B41F51BF7300905F64 /* Photos */ = {
@@ -491,8 +516,10 @@
 				733239791F53094800E9AC7B /* PhotoDetailsViewRouter.swift in Sources */,
 				739827F31F56FF2B00730BE6 /* ApiPhotosGateway.swift in Sources */,
 				7333A3EC1F5AD45F00996C84 /* ApiRequest.swift in Sources */,
+				732E25731F89F63B006EE4D1 /* MLGateway.swift in Sources */,
 				2FC6C4A31E60B65E005539F5 /* Result.swift in Sources */,
 				739827F11F56EDDD00730BE6 /* Photo.swift in Sources */,
+				737D15FD1F88FF8000C268DE /* Inceptionv3.mlmodel in Sources */,
 				2F3D6B801E61A37400CF7881 /* UIViewController-Alert.swift in Sources */,
 				739827EF1F56EC7A00730BE6 /* PhotosGateway.swift in Sources */,
 				2FC6C4981E60B5C4005539F5 /* ViewRouter.swift in Sources */,
@@ -502,6 +529,7 @@
 				733239671F52CA6700E9AC7B /* PhotosViewRouter.swift in Sources */,
 				733239691F53037700E9AC7B /* PhotosConfigurator.swift in Sources */,
 				733239771F53094800E9AC7B /* PhotoDetailsPresenter.swift in Sources */,
+				7306ED671F890B12006E6C4E /* DetectPhoto.swift in Sources */,
 				733239631F52C31800E9AC7B /* PhotosCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -640,7 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

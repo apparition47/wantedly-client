@@ -1,6 +1,6 @@
 //
 //  CachePhotosGateway.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/09/03.
 //  Copyright © 2017 One Fat Giraffe. All rights reserved.
@@ -14,9 +14,11 @@ import Foundation
 // If that's the case you will only have to change this class and the use case won't be impacted
 class CachePhotosGateway: PhotosGateway {
     let apiPhotosGateway: ApiPhotosGateway
+    let mlGateway: MLGateway
 
-    init(apiPhotosGateway: ApiPhotosGateway) {
+    init(apiPhotosGateway: ApiPhotosGateway, mlGateway: MLGateway) {
         self.apiPhotosGateway = apiPhotosGateway
+        self.mlGateway = mlGateway
     }
     
     // MARK: - PhotosGateway
@@ -31,6 +33,10 @@ class CachePhotosGateway: PhotosGateway {
         apiPhotosGateway.search(parameters: parameters) { (result) in
             self.handleSearchPhotosApiResult(result, parameters: parameters, completionHandler: completionHandler)
         }
+    }
+    
+    func detectDominant(parameters: DetectPhotoParameters, completionHandler: @escaping DetectPhotoEntityGatewayCompletionHandler) {
+        
     }
     
     // MARK: - Private

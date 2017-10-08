@@ -1,6 +1,6 @@
 //
 //  ApiPhotosGateway.swift
-//  Library
+//  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/09/02.
 //  Copyright © 2017 One Fat Giraffe. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 
 // This protocol in not necessarily needed since it doesn't include any extra methods
-// besides what BooksGateway already provides. However, if there would be any extra methods
+// besides what PhotosGateway already provides. However, if there would be any extra methods
 // on the API that we would need to support it would make sense to have an API specific gateway protocol
 protocol ApiPhotosGateway: PhotosGateway {
     
