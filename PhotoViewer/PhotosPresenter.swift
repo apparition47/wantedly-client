@@ -90,7 +90,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
     
     func didSearch(query: String) {
         let params = SearchPhotosParameters(query: query, page: 0, perPage: nil, collections: nil)
-        self.searchPhotosUseCase.search(parameters: params) { (result) in
+        self.searchPhotosUseCase.search(parameters: params) { result in
             switch result {
             case let .success(photos):
                 self.handlePhotosSearched(photos: photos)
