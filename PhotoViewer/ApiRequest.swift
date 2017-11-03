@@ -65,7 +65,7 @@ extension ApiRequest where ResponseType: Decodable {
 
 extension NSError {
     static func createParseError() -> NSError {
-        return NSError(domain: "com.onefatgiraffe.library",
+        return NSError(domain: "com.onefatgiraffe.photoviewer",
                        code: 999,
                        userInfo: [NSLocalizedDescriptionKey: "A parsing error occured"])
     }
