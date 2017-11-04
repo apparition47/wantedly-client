@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SearchBookUseCaseCompletionHandler = (_ books: Result<[Photo]>) -> Void
+typealias SearchPhotosUseCaseCompletionHandler = (_ photos: Result<[Photo]>) -> Void
 
 struct SearchPhotosParameters {
     let query: String
@@ -18,7 +18,7 @@ struct SearchPhotosParameters {
 }
 
 protocol SearchPhotosUseCase {
-    func search(parameters: SearchPhotosParameters, completionHandler: @escaping SearchBookUseCaseCompletionHandler)
+    func search(parameters: SearchPhotosParameters, completionHandler: @escaping SearchPhotosUseCaseCompletionHandler)
 }
 
 class SearchPhotosUseCaseImplementation: SearchPhotosUseCase {
@@ -31,8 +31,8 @@ class SearchPhotosUseCaseImplementation: SearchPhotosUseCase {
     
     // MARK: - SearchPhotosUseCase
     
-    func search(parameters: SearchPhotosParameters, completionHandler: @escaping SearchBookUseCaseCompletionHandler) {
-        self.photosGateway.search(parameters: parameters) { (result) in
+    func search(parameters: SearchPhotosParameters, completionHandler: @escaping SearchPhotosUseCaseCompletionHandler) {
+        self.photosGateway.search(parameters: parameters) { result in
             completionHandler(result)
         }
     }

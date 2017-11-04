@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias GetPhotosUseCaseCompletionHandler = (_ books: Result<[Photo]>) -> Void
+typealias GetPhotosUseCaseCompletionHandler = (_ photos: Result<[Photo]>) -> Void
 
 protocol GetPhotosUseCase {
     func fetchPhotos(parameters: FetchPhotosParameters, completionHandler: @escaping GetPhotosUseCaseCompletionHandler)

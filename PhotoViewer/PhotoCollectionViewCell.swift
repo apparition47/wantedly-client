@@ -24,6 +24,11 @@ class PhotoCollectionViewCell: UICollectionViewCell, PhotoCellView {
 	
 	func display(thumbnailUrl: String) {
 		thumbnailView.loadImageUsingCache(withUrl: thumbnailUrl)
+        
+        thumbnailView.layer.shadowColor = UIColor.black.cgColor
+        thumbnailView.layer.shadowOpacity = 0.7
+        thumbnailView.layer.shadowOffset = CGSize.zero
+        thumbnailView.layer.shadowRadius = 3
 	}
 	
 }

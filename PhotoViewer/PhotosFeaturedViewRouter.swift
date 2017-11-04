@@ -1,5 +1,5 @@
 //
-//  PhotosViewRouter.swift
+//  PhotosFeaturedViewRouter.swift
 //  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -8,25 +8,25 @@
 
 import UIKit
 
-protocol PhotosViewRouter: ViewRouter {
+protocol PhotosFeaturedViewRouter: ViewRouter {
     func presentDetailsView(for photo: Photo)
 }
 
-class PhotosViewRouterImplementation: PhotosViewRouter {
-    fileprivate weak var photosCollectionViewController: PhotosCollectionViewController?
+class PhotosFeaturedViewRouterImplementation: PhotosFeaturedViewRouter {
+    fileprivate weak var photosFeaturedViewController: PhotosFeaturedViewController?
     fileprivate var photo: Photo!
     
-    init(photosCollectionViewController: PhotosCollectionViewController) {
-        self.photosCollectionViewController = photosCollectionViewController
+    init(photosFeaturedViewController: PhotosFeaturedViewController) {
+        self.photosFeaturedViewController = photosFeaturedViewController
     }
     
     // MARK: - PhotosViewRouter
     
     func presentDetailsView(for photo: Photo) {
         self.photo = photo
-        photosCollectionViewController?.performSegue(withIdentifier: "PhotosSceneToPhotoDetailsSceneSegue", sender: nil)
+        photosFeaturedViewController?.performSegue(withIdentifier: "PhotosFeaturedSceneToPhotoDetailsSceneSegue", sender: nil)
     }
-
+    
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let photoDetailsTableViewController = segue.destination as? PhotoDetailsTableViewController {
             photoDetailsTableViewController.configurator = PhotoDetailsConfiguratorImplementation(photo: photo)
@@ -34,3 +34,4 @@ class PhotosViewRouterImplementation: PhotosViewRouter {
     }
     
 }
+

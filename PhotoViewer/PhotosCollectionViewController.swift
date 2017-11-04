@@ -42,6 +42,17 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelect(row: indexPath.row)
     }
+    
+    // MARK: - UIScrollView
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // if at bottom
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.size.height {
+            presenter.didScrollViewToBottom()
+        }
+    }
 }
 
 // MARK: - PhotosView
@@ -63,7 +74,9 @@ extension PhotosCollectionViewController: PhotosView {
 
 extension PhotosCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        presenter.didSearch(query: searchBar.text!)
+        if let query = searchBar.text {
+            presenter.didSearch(query, clearOldResults: true)
+        }
         searchBar.resignFirstResponder()
     }
 }

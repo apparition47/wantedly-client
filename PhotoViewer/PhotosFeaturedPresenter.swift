@@ -1,5 +1,5 @@
 //
-//  PhotosPresenter.swift
+//  PhotosFeaturedPresenter.swift
 //  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -8,48 +8,49 @@
 
 import Foundation
 
-protocol PhotosView: class {
+protocol PhotosFeaturedView: class {
     func refreshPhotosView()
     func displayPhotosRetrievalError(title: String, message: String)
+    func updateBackground(hexColour: String)
 }
 
-protocol PhotoCellView {
-    func display(createdAt: String)
-    func display(username: String)
-    func display(thumbnailUrl: String)
-}
+//protocol PhotoFeaturedCellView {
+//    func display(createdAt: String)
+//    func display(username: String)
+//    func display(thumbnailUrl: String)
+//}
 
-protocol PhotosPresenter {
+protocol PhotosFeaturedPresenter {
     var numberOfPhotos: Int { get }
-    var router: PhotosViewRouter { get }
+    var router: PhotosFeaturedViewRouter { get }
     func viewDidLoad()
-    func configure(cell: PhotoCellView, forRow row: Int)
+    func configure(cell: PhotoCollectionViewCell, forRow row: Int)
     func didSelect(row: Int)
-    func didSearch(_ query: String, clearOldResults: Bool)
-    func didScrollViewToBottom()
+    func didSnap(to row: Int)
+    func didScrollViewToEnd()
 }
 
-class PhotosPresenterImplementation: PhotosPresenter {
-    fileprivate weak var view: PhotosView?
-    fileprivate let searchPhotosUseCase: SearchPhotosUseCase
-    internal let router: PhotosViewRouter
+class PhotosFeaturedPresenterImplementation: PhotosFeaturedPresenter {
+    fileprivate weak var view: PhotosFeaturedView?
+    fileprivate let getPhotosUseCase: GetPhotosUseCase
+    internal let router: PhotosFeaturedViewRouter
     
     // Normally this would be file private as well, we keep it internal so we can inject values for testing purposes
     var photos = [Photo]()
     
     private var currentPage = 0
-    private let pageSize = 10
+    private let pageSize = 5
     private var lastSearchQuery = ""
     
     var numberOfPhotos: Int {
         return photos.count
     }
     
-    init(view: PhotosView,
-         searchPhotosUseCase: SearchPhotosUseCase,
-         router: PhotosViewRouter) {
+    init(view: PhotosFeaturedView,
+         getPhotosUseCase: GetPhotosUseCase,
+         router: PhotosFeaturedViewRouter) {
         self.view = view
-        self.searchPhotosUseCase = searchPhotosUseCase
+        self.getPhotosUseCase = getPhotosUseCase
         self.router = router
     }
     
@@ -57,10 +58,10 @@ class PhotosPresenterImplementation: PhotosPresenter {
     // MARK: - PhotosPresenter
     
     func viewDidLoad() {
-//        fetchPhotos()
+        fetchPhotos()
     }
     
-    func configure(cell: PhotoCellView, forRow row: Int) {
+    func configure(cell: PhotoCollectionViewCell, forRow row: Int) {
         let photo = photos[row]
         
         let formatter = DateFormatter()
@@ -75,34 +76,30 @@ class PhotosPresenterImplementation: PhotosPresenter {
         
         router.presentDetailsView(for: photo)
     }
+
+    func didSnap(to row: Int) {
+        view?.updateBackground(hexColour: photos[row].colour)
+    }
     
-    func didSearch(_ query: String, clearOldResults: Bool) {
-        lastSearchQuery = query
-        
-        if clearOldResults {
-            currentPage = 0
-            photos.removeAll()
-        }
-        
+    func didScrollViewToEnd() {
+        fetchPhotos()
+    }
+    
+    // MARK: - Private
+    private func fetchPhotos() {
         currentPage += 1
-        
-        let params = SearchPhotosParameters(query: query, page: currentPage, perPage: pageSize, collections: nil)
-        self.searchPhotosUseCase.search(parameters: params) { result in
+        let params: FetchPhotosParameters = FetchPhotosParameters(page: currentPage, perPage: pageSize, orderBy: OrderBy.Latest)
+
+        getPhotosUseCase.fetchPhotos(parameters: params) { result in
             switch result {
             case let .success(photos):
-                self.handlePhotosSearched(photos: photos)
+                self.handlePhotosReceived(photos)
             case let .failure(error):
                 self.currentPage -= 1
                 self.handlePhotosError(error)
             }
         }
     }
-    
-    func didScrollViewToBottom() {
-        didSearch(lastSearchQuery, clearOldResults: false)
-    }
-
-    // MARK: - Private
     
     fileprivate func handlePhotosReceived(_ photos: [Photo]) {
         self.photos += photos
@@ -112,10 +109,5 @@ class PhotosPresenterImplementation: PhotosPresenter {
     fileprivate func handlePhotosError(_ error: Error) {
         // Here we could check the error code and display a localized error message
         view?.displayPhotosRetrievalError(title: "Error", message: error.localizedDescription)
-    }
-    
-    fileprivate func handlePhotosSearched(photos: [Photo]) {
-        self.photos += photos
-        view?.refreshPhotosView()
     }
 }
