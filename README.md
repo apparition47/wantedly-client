@@ -1,27 +1,22 @@
-# Unsplash Viewer
+# PhotoViewer
 
-![Demo](https://user-images.githubusercontent.com/3298414/30434179-8a489c26-99a1-11e7-8fdb-7fd93e2ac829.gif)
+An [Unsplash](https://unsplash.com) photo viewer. 
 
-## Description
+![Demo](https://user-images.githubusercontent.com/3298414/32414948-7c924f36-c274-11e7-9524-6237b8eccc1a.gif)
 
-[Unsplash](https://unsplash.com) photo viewer using [Clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html). Uses Core ML, Vision and [Inception Core ML Model](https://developer.apple.com/machine-learning/) to detect the dominant object in the photo.
+## Features
+
+* [Clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html).
+* Implemented Unsplash API functions: [get latest photos, search for photos by keywords](https://unsplash.com/documentation#list-photos).
+* Uses the [Inception Core ML Model (94.7MB 😨)](https://developer.apple.com/machine-learning/) to detect the dominant object in the photo. Tap on the keyword to search for even more photos.
 
 ## Usage
 
-Tested with Xcode 9, iOS 11.
+Tested with Xcode 9.1, Swift 4, iOS 11.
 
-1. [CocoaPods](https://cocoapods.org) `$ pod install`
-2. Download *Inception v3* `$ curl https://docs-assets.developer.apple.com/coreml/models/Inceptionv3.mlmodel > PhotoViewer/Inceptionv3.mlmodel`
-3. In `Constants.swift`, enter your [Unsplash Application ID](https://unsplash.com/oauth/applications).
+1. All dependencies and pods included in the zip. Build and run.
 
-```Swift
-let unsplashAppId = "Unsplash Application ID Here"
-```
 
-## Credits
+### 403 Errors?
 
-* Based on a Clean Architecture demo by [@FortechRomania](https://github.com/FortechRomania)
-
-## License
-
-MIT
+The included [Unsplash API key](https://unsplash.com/oauth/applications) is rate limited to 50 requests per hour 😔

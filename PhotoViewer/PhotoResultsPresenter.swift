@@ -1,5 +1,5 @@
 //
-//  PhotosPresenter.swift
+//  PhotoResultsPresenter.swift
 //  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -20,9 +20,9 @@ protocol PhotoCellView {
     func display(thumbnailUrl: String)
 }
 
-protocol PhotosPresenter {
+protocol PhotoResultsPresenter {
     var numberOfPhotos: Int { get }
-    var router: PhotosViewRouter { get }
+    var router: PhotoResultsViewRouter { get }
     func viewDidLoad()
     func configure(cell: PhotoCellView, forRow row: Int)
     func didSelect(row: Int)
@@ -30,11 +30,11 @@ protocol PhotosPresenter {
     func didScrollViewToBottom()
 }
 
-class PhotosPresenterImplementation: PhotosPresenter {
+class PhotoResultsPresenterImplementation: PhotoResultsPresenter {
     fileprivate var query: String
     fileprivate weak var view: PhotosView?
     fileprivate let searchPhotosUseCase: SearchPhotosUseCase
-    internal let router: PhotosViewRouter
+    internal let router: PhotoResultsViewRouter
     
     // Normally this would be file private as well, we keep it internal so we can inject values for testing purposes
     var photos = [Photo]()
@@ -49,7 +49,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
     init(view: PhotosView,
          searchPhotosUseCase: SearchPhotosUseCase,
          query: String,
-         router: PhotosViewRouter) {
+         router: PhotoResultsViewRouter) {
         self.view = view
         self.searchPhotosUseCase = searchPhotosUseCase
         self.query = query

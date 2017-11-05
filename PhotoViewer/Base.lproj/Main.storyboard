@@ -29,10 +29,10 @@
             </objects>
             <point key="canvasLocation" x="-3389" y="959"/>
         </scene>
-        <!--Photos Collection View Controller-->
+        <!--Photo Results View Controller-->
         <scene sceneID="8Nd-W3-9oQ">
             <objects>
-                <collectionViewController id="ShF-it-JMr" customClass="PhotosCollectionViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="ShF-it-JMr" customClass="PhotoResultsViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cBi-wC-F5b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

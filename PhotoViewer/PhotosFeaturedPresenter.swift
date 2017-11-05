@@ -2,7 +2,7 @@
 //  PhotosFeaturedPresenter.swift
 //  PhotoViewer
 //
-//  Created by Aaron Lee on 2017/11/03.
+//  Created by Aaron Lee on 2017/11/05.
 //  Copyright © 2017 Aaron Lee. All rights reserved.
 //
 
@@ -101,7 +101,6 @@ class PhotosFeaturedPresenterImplementation: PhotosFeaturedPresenter {
     }
     
     fileprivate func handlePhotosError(_ error: Error) {
-        // Here we could check the error code and display a localized error message
         view?.displayPhotosRetrievalError(title: "Error", message: error.localizedDescription)
     }
 }

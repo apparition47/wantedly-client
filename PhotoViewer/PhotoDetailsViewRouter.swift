@@ -33,8 +33,8 @@ class PhotoDetailsViewRouterImplementation: PhotoDetailsViewRouter {
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let photosCollectionViewController = segue.destination as? PhotosCollectionViewController {
-            photosCollectionViewController.configurator = PhotosConfiguratorImplementation(query: query)
+        if let photoResultsViewController = segue.destination as? PhotoResultsViewController {
+            photoResultsViewController.configurator = PhotoResultsConfiguratorImplementation(query: query)
         }
     }
 }

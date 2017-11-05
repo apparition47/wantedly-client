@@ -1,5 +1,5 @@
 //
-//  PhotosCollectionViewController.swift
+//  PhotoResultsViewController.swift
 //  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class PhotosCollectionViewController: UICollectionViewController {
-    var configurator = PhotosConfiguratorImplementation(query: "")
-    var presenter: PhotosPresenter!
+class PhotoResultsViewController: UICollectionViewController {
+    var configurator = PhotoResultsConfiguratorImplementation(query: "")
+    var presenter: PhotoResultsPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configurator.configure(photosCollectionViewController: self)
+        configurator.configure(photoResultsViewController: self)
         presenter.viewDidLoad()
     }
     
@@ -58,7 +58,7 @@ class PhotosCollectionViewController: UICollectionViewController {
 
 // MARK: - PhotosView
 
-extension PhotosCollectionViewController: PhotosView {
+extension PhotoResultsViewController: PhotosView {
     func updateTitleBar(givenTitle: String) {
         if !givenTitle.isEmpty {
             searchBar.isHidden = true
@@ -81,7 +81,7 @@ extension PhotosCollectionViewController: PhotosView {
 
 // MARK: - Search
 
-extension PhotosCollectionViewController: UISearchBarDelegate {
+extension PhotoResultsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let query = searchBar.text {
             presenter.didSearch(query, clearOldResults: true)

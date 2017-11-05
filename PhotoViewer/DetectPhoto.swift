@@ -29,7 +29,6 @@ class DetectPhotoUseCaseImplementation: DetectPhotoUseCase {
     
     func detectDominant(parameters: DetectPhotoParameters, completionHandler: @escaping DetectPhotoEntityGatewayCompletionHandler) {
         self.mlGateway.detectDominant(parameters: parameters) { result in
-            // Do any additional processing & after that call the completion handler
             completionHandler(result)
         }
     }

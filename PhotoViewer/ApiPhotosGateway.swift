@@ -8,9 +8,7 @@
 
 import Foundation
 
-// This protocol in not necessarily needed since it doesn't include any extra methods
-// besides what PhotosGateway already provides. However, if there would be any extra methods
-// on the API that we would need to support it would make sense to have an API specific gateway protocol
+
 protocol ApiPhotosGateway: PhotosGateway {
     
 }
