@@ -24,6 +24,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - IBAction
+    @IBOutlet var searchBar: UISearchBar!
     
     
     // MARK: - UICollectionViewDataSource
@@ -58,6 +59,14 @@ class PhotosCollectionViewController: UICollectionViewController {
 // MARK: - PhotosView
 
 extension PhotosCollectionViewController: PhotosView {
+    func updateTitleBar(givenTitle: String) {
+        if !givenTitle.isEmpty {
+            searchBar.isHidden = true
+            // TODO fix viewcontroller titling
+//            title = givenTitle
+        }
+    }
+    
     func refreshPhotosView() {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()

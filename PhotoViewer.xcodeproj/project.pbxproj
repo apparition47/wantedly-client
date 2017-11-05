@@ -29,6 +29,7 @@
 		7333A3EA1F5ACFEB00996C84 /* SearchApiPhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */; };
 		7333A3EC1F5AD45F00996C84 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */; };
 		734AF5E61FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AF5E51FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift */; };
+		734AF5E81FAF287E00C7099B /* PhotoKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AF5E71FAF287E00C7099B /* PhotoKeywordCell.swift */; };
 		734BA0FF1F5C03A00006B3D4 /* CachePhotosGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734BA0FE1F5C03A00006B3D4 /* CachePhotosGateway.swift */; };
 		7370A2261F682B400062C4F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370A2251F682B400062C4F9 /* Constants.swift */; };
 		737D15FD1F88FF8000C268DE /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */; };
@@ -82,6 +83,7 @@
 		7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchApiPhotosRequest.swift; sourceTree = "<group>"; };
 		7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		734AF5E51FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFeaturedConfigurator.swift; sourceTree = "<group>"; };
+		734AF5E71FAF287E00C7099B /* PhotoKeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoKeywordCell.swift; sourceTree = "<group>"; };
 		734BA0FE1F5C03A00006B3D4 /* CachePhotosGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachePhotosGateway.swift; sourceTree = "<group>"; };
 		7370A2251F682B400062C4F9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				733239731F53094800E9AC7B /* PhotoDetailsPresenter.swift */,
 				733239751F53094800E9AC7B /* PhotoDetailsViewRouter.swift */,
 				733239721F53094800E9AC7B /* PhotoDetailsConfigurator.swift */,
+				734AF5E71FAF287E00C7099B /* PhotoKeywordCell.swift */,
 			);
 			name = "Photo Details";
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				733239761F53094800E9AC7B /* PhotoDetailsConfigurator.swift in Sources */,
 				733239651F52C39900E9AC7B /* PhotosPresenter.swift in Sources */,
 				2FC6C46F1E60B542005539F5 /* AppDelegate.swift in Sources */,
+				734AF5E81FAF287E00C7099B /* PhotoKeywordCell.swift in Sources */,
 				7370A2261F682B400062C4F9 /* Constants.swift in Sources */,
 				2F3D6B861E61D0AC00CF7881 /* ApiClient.swift in Sources */,
 				733239791F53094800E9AC7B /* PhotoDetailsViewRouter.swift in Sources */,

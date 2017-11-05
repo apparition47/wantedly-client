@@ -17,21 +17,34 @@ protocol PhotoDetailsView: class {
     func display(description: String)
     func display(username: String)
     func display(largePhotoUrl: String)
-    func display(dominantObject: String)
+//    func display(dominantObject: String)
+    func refreshKeywordsView()
+}
+
+protocol PhotoKeywordView {
+    func display(keyword: String)
 }
 
 protocol PhotoDetailsPresenter {
+    var numberOfKeywords: Int { get }
 	var router: PhotoDetailsViewRouter { get }
 	func viewDidLoad()
-    func didSelectKeyword(_ keyword: String)
+    func configure(cell: PhotoKeywordCell, forRow row: Int)
+    func didSelect(row: Int)
 }
 
 class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
 	fileprivate let photo: Photo
+    fileprivate var dominantCategory: String?
     fileprivate let detectPhotoUseCase: DetectPhotoUseCase
 	let router: PhotoDetailsViewRouter
 	fileprivate weak var view: PhotoDetailsView?
-	
+    
+    var autoDetectedKeywords = [String]()
+    var numberOfKeywords: Int {
+        return autoDetectedKeywords.count
+    }
+    
 	init(view: PhotoDetailsView,
          detectPhotoUseCase: DetectPhotoUseCase,
 	     photo: Photo,
@@ -57,17 +70,27 @@ class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
         let params = DetectPhotoParameters(photoUrl: photo.urls.small)
         self.detectPhotoUseCase.detectDominant(parameters: params) { [unowned self] result in
             switch result {
-            case .success(let cat):
-                DispatchQueue.main.async {
-                    self.view?.display(dominantObject: cat)
-                }
+            case .success(let identifiers):
+                self.handleDetectionSuccess(identifiers)
             case .failure:
                 break
             }
         }
 	}
     
-    func didSelectKeyword(_ keyword: String) {
-        router.presentSearchView(for: keyword)
+    func configure(cell: PhotoKeywordCell, forRow row: Int) {
+        let autoDetectedKeyword = autoDetectedKeywords[row]
+        cell.display(keyword: autoDetectedKeyword)
+    }
+    
+    func didSelect(row: Int) {
+        let autoDetectedKeyword = autoDetectedKeywords[row]
+        router.presentSearchView(for: autoDetectedKeyword)
+    }
+    
+    // MARK: - Private
+    fileprivate func handleDetectionSuccess(_ keywords: [String]) {
+        autoDetectedKeywords = keywords
+        view?.refreshKeywordsView()
     }
 }

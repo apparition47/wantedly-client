@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PhotosView: class {
+    func updateTitleBar(givenTitle: String)
     func refreshPhotosView()
     func displayPhotosRetrievalError(title: String, message: String)
 }
@@ -59,7 +60,8 @@ class PhotosPresenterImplementation: PhotosPresenter {
     // MARK: - PhotosPresenter
     
     func viewDidLoad() {
-//        didSearch(query, clearOldResults: true)
+        view?.updateTitleBar(givenTitle: query)
+        didSearch(query, clearOldResults: true)
     }
     
     func configure(cell: PhotoCellView, forRow row: Int) {
