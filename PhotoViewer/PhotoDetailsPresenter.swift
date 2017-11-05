@@ -23,6 +23,7 @@ protocol PhotoDetailsView: class {
 protocol PhotoDetailsPresenter {
 	var router: PhotoDetailsViewRouter { get }
 	func viewDidLoad()
+    func didSelectKeyword(_ keyword: String)
 }
 
 class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
@@ -65,4 +66,8 @@ class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
             }
         }
 	}
+    
+    func didSelectKeyword(_ keyword: String) {
+        router.presentSearchView(for: keyword)
+    }
 }

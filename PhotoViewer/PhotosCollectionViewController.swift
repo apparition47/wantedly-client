@@ -9,7 +9,7 @@
 import UIKit
 
 class PhotosCollectionViewController: UICollectionViewController {
-    var configurator = PhotosConfiguratorImplementation()
+    var configurator = PhotosConfiguratorImplementation(query: "")
     var presenter: PhotosPresenter!
     
     override func viewDidLoad() {

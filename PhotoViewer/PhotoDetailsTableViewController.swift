@@ -32,6 +32,10 @@ class PhotoDetailsTableViewController: UITableViewController {
         
         tableView.allowsSelection = false
 	}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        presenter.router.prepare(for: segue, sender: sender)
+    }
 }
 
 // MARK: - PhotoDetailsView

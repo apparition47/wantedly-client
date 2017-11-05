@@ -14,9 +14,6 @@ protocol DetectPhotoUseCase {
     func detectDominant(parameters: DetectPhotoParameters, completionHandler: @escaping DetectPhotoEntityGatewayCompletionHandler)
 }
 
-// This class is used across all layers - Core, UI and Network
-// It's not violating any dependency rules.
-// However it might make sense for each layer do define it's own input parameters so it can be used independently of the other layers.
 struct DetectPhotoParameters {
     let photoUrl: String?
 }

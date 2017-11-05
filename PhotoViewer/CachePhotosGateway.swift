@@ -8,10 +8,6 @@
 
 import Foundation
 
-// Discussion:
-// Maybe it makes sense to perform all the operations locally and only after that make the API call
-// to sync the local content with the API.
-// If that's the case you will only have to change this class and the use case won't be impacted
 class CachePhotosGateway: PhotosGateway {
     let apiPhotosGateway: ApiPhotosGateway
     let mlGateway: MLGateway

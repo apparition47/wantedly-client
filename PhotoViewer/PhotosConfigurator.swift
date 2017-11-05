@@ -13,6 +13,11 @@ protocol PhotosConfigurator {
 }
 
 class PhotosConfiguratorImplementation: PhotosConfigurator {
+    let query: String
+    
+    init(query: String) {
+        self.query = query
+    }
     
     func configure(photosCollectionViewController: PhotosCollectionViewController) {
         let apiClient = ApiClientImplementation(urlSessionConfiguration: URLSessionConfiguration.default,
@@ -27,6 +32,7 @@ class PhotosConfiguratorImplementation: PhotosConfigurator {
         
         let presenter = PhotosPresenterImplementation(view: photosCollectionViewController,
                                                      searchPhotosUseCase: searchPhotosUseCase,
+                                                     query: query,
                                                      router: router)
         
         photosCollectionViewController.presenter = presenter

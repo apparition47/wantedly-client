@@ -14,12 +14,6 @@ protocol PhotosFeaturedView: class {
     func updateBackground(hexColour: String)
 }
 
-//protocol PhotoFeaturedCellView {
-//    func display(createdAt: String)
-//    func display(username: String)
-//    func display(thumbnailUrl: String)
-//}
-
 protocol PhotosFeaturedPresenter {
     var numberOfPhotos: Int { get }
     var router: PhotosFeaturedViewRouter { get }

@@ -30,6 +30,7 @@ protocol PhotosPresenter {
 }
 
 class PhotosPresenterImplementation: PhotosPresenter {
+    fileprivate var query: String
     fileprivate weak var view: PhotosView?
     fileprivate let searchPhotosUseCase: SearchPhotosUseCase
     internal let router: PhotosViewRouter
@@ -39,7 +40,6 @@ class PhotosPresenterImplementation: PhotosPresenter {
     
     private var currentPage = 0
     private let pageSize = 10
-    private var lastSearchQuery = ""
     
     var numberOfPhotos: Int {
         return photos.count
@@ -47,9 +47,11 @@ class PhotosPresenterImplementation: PhotosPresenter {
     
     init(view: PhotosView,
          searchPhotosUseCase: SearchPhotosUseCase,
+         query: String,
          router: PhotosViewRouter) {
         self.view = view
         self.searchPhotosUseCase = searchPhotosUseCase
+        self.query = query
         self.router = router
     }
     
@@ -57,7 +59,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
     // MARK: - PhotosPresenter
     
     func viewDidLoad() {
-//        fetchPhotos()
+//        didSearch(query, clearOldResults: true)
     }
     
     func configure(cell: PhotoCellView, forRow row: Int) {
@@ -77,7 +79,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
     }
     
     func didSearch(_ query: String, clearOldResults: Bool) {
-        lastSearchQuery = query
+        self.query = query
         
         if clearOldResults {
             currentPage = 0
@@ -99,7 +101,7 @@ class PhotosPresenterImplementation: PhotosPresenter {
     }
     
     func didScrollViewToBottom() {
-        didSearch(lastSearchQuery, clearOldResults: false)
+        didSearch(query, clearOldResults: false)
     }
 
     // MARK: - Private
