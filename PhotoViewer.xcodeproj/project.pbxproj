@@ -28,6 +28,7 @@
 		7333A3E81F5ACFE100996C84 /* GetPhotosApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3E71F5ACFE100996C84 /* GetPhotosApiRequest.swift */; };
 		7333A3EA1F5ACFEB00996C84 /* SearchApiPhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */; };
 		7333A3EC1F5AD45F00996C84 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */; };
+		734AF5E61FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AF5E51FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift */; };
 		734BA0FF1F5C03A00006B3D4 /* CachePhotosGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734BA0FE1F5C03A00006B3D4 /* CachePhotosGateway.swift */; };
 		7370A2261F682B400062C4F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370A2251F682B400062C4F9 /* Constants.swift */; };
 		737D15FD1F88FF8000C268DE /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */; };
@@ -80,6 +81,7 @@
 		7333A3E71F5ACFE100996C84 /* GetPhotosApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPhotosApiRequest.swift; sourceTree = "<group>"; };
 		7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchApiPhotosRequest.swift; sourceTree = "<group>"; };
 		7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		734AF5E51FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFeaturedConfigurator.swift; sourceTree = "<group>"; };
 		734BA0FE1F5C03A00006B3D4 /* CachePhotosGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachePhotosGateway.swift; sourceTree = "<group>"; };
 		7370A2251F682B400062C4F9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		737D15FC1F88FF7700C268DE /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				739D8A201FAD87E3000B279B /* PhotosFeaturedViewController.swift */,
 				739D8A241FAD8A3B000B279B /* PhotosFeaturedPresenter.swift */,
 				739D8A221FAD8998000B279B /* PhotosFeaturedViewRouter.swift */,
+				734AF5E51FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift */,
 			);
 			name = "Photo Featured";
 			sourceTree = "<group>";
@@ -402,7 +405,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "One Fat Giraffe";
+				ORGANIZATIONNAME = "Aaron Lee";
 				TargetAttributes = {
 					2FC6C46A1E60B542005539F5 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -551,6 +554,7 @@
 				733239771F53094800E9AC7B /* PhotoDetailsPresenter.swift in Sources */,
 				7306ED671F890B12006E6C4E /* DetectPhoto.swift in Sources */,
 				733239631F52C31800E9AC7B /* PhotosCollectionViewController.swift in Sources */,
+				734AF5E61FAEEC4F00C7099B /* PhotosFeaturedConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

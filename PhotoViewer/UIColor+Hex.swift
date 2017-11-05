@@ -3,7 +3,7 @@
 //  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/11/04.
-//  Copyright © 2017 One Fat Giraffe. All rights reserved.
+//  Copyright © 2017 Aaron Lee. All rights reserved.
 //
 
 import UIKit

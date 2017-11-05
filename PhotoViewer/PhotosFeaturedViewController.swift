@@ -3,20 +3,28 @@
 //  PhotoViewer
 //
 //  Created by Aaron Lee on 2017/11/03.
-//  Copyright © 2017 One Fat Giraffe. All rights reserved.
+//  Copyright © 2017 Aaron Lee. All rights reserved.
 //
 
 import UIKit
 
 class PhotosFeaturedViewController: UICollectionViewController {
-    var configurator = PhotosConfiguratorImplementation()
+    var configurator = PhotosFeaturedConfiguratorImplementation()
     var presenter: PhotosFeaturedPresenter!
+    let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configurator.configure(photosFeaturedViewController: self)
         presenter.viewDidLoad()
+        
+        // We can inform the feedback generator that it will likely receive events soon,
+        // which basically 'wakes up' the device's taptic engine for a few seconds,
+        // preparing it for use without any latency. You can call this function as many
+        // times as you want. Good tims to call this is when a gesture begins and right
+        // after a haptic signal is played.
+        notificationFeedbackGenerator.prepare()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,6 +114,8 @@ extension PhotosFeaturedViewController: PhotosFeaturedView {
     
     func displayPhotosRetrievalError(title: String, message: String) {
         presentAlert(withTitle: title, message: message)
+        
+        notificationFeedbackGenerator.notificationOccurred(.error)
     }
     
     func updateBackground(hexColour: String) {
