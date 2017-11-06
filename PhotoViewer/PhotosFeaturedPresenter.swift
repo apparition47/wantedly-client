@@ -62,7 +62,7 @@ class PhotosFeaturedPresenterImplementation: PhotosFeaturedPresenter {
         formatter.dateFormat = "yyyy-MM-dd"
         cell.display(createdAt: formatter.string(from: photo.createdAt))
         cell.display(username: photo.username)
-        cell.display(thumbnailUrl: photo.urls.thumb)
+        cell.display(thumbnailUrl: photo.urls.small)
     }
     
     func didSelect(row: Int) {

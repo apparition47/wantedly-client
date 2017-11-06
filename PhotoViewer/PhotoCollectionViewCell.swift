@@ -31,4 +31,8 @@ class PhotoCollectionViewCell: UICollectionViewCell, PhotoCellView {
         thumbnailView.layer.shadowRadius = 3
 	}
 	
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailView.image = nil
+    }
 }
