@@ -11,12 +11,15 @@ import UIKit
 final class PhotoResultsViewController: UICollectionViewController {
     var configurator = PhotoResultsConfiguratorImplementation(query: "")
     var presenter: PhotoResultsPresenter!
+    var notificationFeedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configurator.configure(photoResultsViewController: self)
         presenter.viewDidLoad()
+        
+        notificationFeedbackGenerator = UINotificationFeedbackGenerator()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +54,7 @@ final class PhotoResultsViewController: UICollectionViewController {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height {
+            notificationFeedbackGenerator?.prepare()
             presenter.didScrollViewToBottom()
         }
     }
@@ -75,6 +79,7 @@ extension PhotoResultsViewController: PhotosView {
     
     func displayPhotosRetrievalError(title: String, message: String) {
         presentAlert(withTitle: title, message: message)
+        notificationFeedbackGenerator?.notificationOccurred(.error)
     }
 
 }

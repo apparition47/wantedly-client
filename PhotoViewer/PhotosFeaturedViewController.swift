@@ -11,7 +11,7 @@ import UIKit
 final class PhotosFeaturedViewController: UICollectionViewController {
     var configurator = PhotosFeaturedConfiguratorImplementation()
     var presenter: PhotosFeaturedPresenter!
-    let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+    var notificationFeedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +19,7 @@ final class PhotosFeaturedViewController: UICollectionViewController {
         configurator.configure(photosFeaturedViewController: self)
         presenter.viewDidLoad()
         
-        // We can inform the feedback generator that it will likely receive events soon,
-        // which basically 'wakes up' the device's taptic engine for a few seconds,
-        // preparing it for use without any latency. You can call this function as many
-        // times as you want. Good tims to call this is when a gesture begins and right
-        // after a haptic signal is played.
-        notificationFeedbackGenerator.prepare()
+        notificationFeedbackGenerator = UINotificationFeedbackGenerator()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,6 +59,7 @@ final class PhotosFeaturedViewController: UICollectionViewController {
         let offsetX = scrollView.contentOffset.x
         let contentWidth = scrollView.contentSize.width
         if offsetX > contentWidth - scrollView.frame.size.width {
+            notificationFeedbackGenerator?.prepare()
             presenter.didScrollViewToEnd()
         }
     }
@@ -115,7 +111,7 @@ extension PhotosFeaturedViewController: PhotosFeaturedView {
     func displayPhotosRetrievalError(title: String, message: String) {
         presentAlert(withTitle: title, message: message)
         
-        notificationFeedbackGenerator.notificationOccurred(.error)
+        notificationFeedbackGenerator?.notificationOccurred(.error)
     }
     
     func updateBackground(hexColour: String) {
