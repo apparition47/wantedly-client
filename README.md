@@ -1,8 +1,9 @@
 # PhotoViewer
 
-An [Unsplash](https://unsplash.com) photo viewer. 
+An [Unsplash](https://unsplash.com) photo viewer written in Swift.
 
 ![Demo](https://user-images.githubusercontent.com/3298414/32414948-7c924f36-c274-11e7-9524-6237b8eccc1a.gif)
+
 
 ## Features
 

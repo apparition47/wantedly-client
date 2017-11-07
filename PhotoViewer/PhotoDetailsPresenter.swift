@@ -63,7 +63,7 @@ class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
         
         view?.display(dimensions: "\(photo.width) by \(photo.height)")
         view?.display(likes: "\(photo.likes)")
-        view?.display(description: photo.description ?? "なし")
+        view?.display(description: photo.description ?? "(N/A)")
         view?.display(username: photo.username)
         view?.display(largePhotoUrl: photo.urls.regular)
         
