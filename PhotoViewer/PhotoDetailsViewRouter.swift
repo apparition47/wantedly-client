@@ -14,6 +14,10 @@ protocol PhotoDetailsViewRouter: ViewRouter {
 }
 
 class PhotoDetailsViewRouterImplementation: PhotoDetailsViewRouter {
+    struct Segue {
+        static let photoDetailsSceneToPhotoSearchSceneSegue = "PhotoDetailsSceneToPhotoSearchSceneSegue"
+    }
+    
 	fileprivate weak var photoDetailsTableViewController: PhotoDetailsTableViewController?
     fileprivate var query: String!
 	
@@ -29,7 +33,7 @@ class PhotoDetailsViewRouterImplementation: PhotoDetailsViewRouter {
     
     func presentSearchView(for query: String) {
         self.query = query
-        photoDetailsTableViewController?.performSegue(withIdentifier: "PhotoDetailsSceneToPhotoSearchSceneSegue", sender: nil)
+        photoDetailsTableViewController?.performSegue(withIdentifier: Segue.photoDetailsSceneToPhotoSearchSceneSegue, sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {

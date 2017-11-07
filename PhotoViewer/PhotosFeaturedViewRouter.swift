@@ -13,6 +13,10 @@ protocol PhotosFeaturedViewRouter: ViewRouter {
 }
 
 class PhotosFeaturedViewRouterImplementation: PhotosFeaturedViewRouter {
+    struct Segue {
+        static let photosFeaturedSceneToPhotoDetailsScene = "PhotosFeaturedSceneToPhotoDetailsSceneSegue"
+    }
+    
     fileprivate weak var photosFeaturedViewController: PhotosFeaturedViewController?
     fileprivate var photo: Photo!
     
@@ -24,7 +28,7 @@ class PhotosFeaturedViewRouterImplementation: PhotosFeaturedViewRouter {
     
     func presentDetailsView(for photo: Photo) {
         self.photo = photo
-        photosFeaturedViewController?.performSegue(withIdentifier: "PhotosFeaturedSceneToPhotoDetailsSceneSegue", sender: nil)
+        photosFeaturedViewController?.performSegue(withIdentifier: Segue.photosFeaturedSceneToPhotoDetailsScene, sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
