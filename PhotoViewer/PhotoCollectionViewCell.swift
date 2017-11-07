@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Reusable
 
-class PhotoCollectionViewCell: UICollectionViewCell, PhotoCellView {
+final class PhotoCollectionViewCell: UICollectionViewCell, PhotoCellView, Reusable {
     
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!

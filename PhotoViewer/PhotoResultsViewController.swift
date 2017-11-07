@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoResultsViewController: UICollectionViewController {
+final class PhotoResultsViewController: UICollectionViewController {
     var configurator = PhotoResultsConfiguratorImplementation(query: "")
     var presenter: PhotoResultsPresenter!
     
@@ -34,7 +34,7 @@ class PhotoResultsViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCollectionViewCell
         presenter.configure(cell: cell, forRow: indexPath.row)
         
         return cell

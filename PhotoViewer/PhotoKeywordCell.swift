@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Reusable
 
-class PhotoKeywordCell: UICollectionViewCell, PhotoKeywordView {
+final class PhotoKeywordCell: UICollectionViewCell, PhotoKeywordView, Reusable {
     
     @IBOutlet weak var keywordButton: UILabel!
     

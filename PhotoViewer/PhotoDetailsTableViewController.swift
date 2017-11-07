@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoDetailsTableViewController: UITableViewController {
+final class PhotoDetailsTableViewController: UITableViewController {
 	var presenter: PhotoDetailsPresenter!
 	var configurator: PhotoDetailsConfigurator!
 	
@@ -49,7 +49,7 @@ extension PhotoDetailsTableViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoKeywordCell", for: indexPath) as! PhotoKeywordCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoKeywordCell
         presenter.configure(cell: cell, forRow: indexPath.row)
         
         // pulse to indicate it's interactable
