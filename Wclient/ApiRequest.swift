@@ -25,7 +25,8 @@ protocol ApiRequest {
 
 extension ApiRequest {
     var baseUrl: String {
-        return "https://api.unsplash.com"
+        let apiVersion = "v1"
+        return "https://www.wantedly.com/api/\(apiVersion)"
     }
     
     var path: String {
