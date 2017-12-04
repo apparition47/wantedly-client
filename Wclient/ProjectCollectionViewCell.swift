@@ -1,5 +1,5 @@
 //
-//  PhotoCollectionViewCell.swift
+//  ProjectCollectionViewCell.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -9,7 +9,7 @@
 import UIKit
 import Reusable
 
-final class PhotoCollectionViewCell: UICollectionViewCell, PhotoCellView, Reusable {
+final class ProjectCollectionViewCell: UICollectionViewCell, ProjectCellView, Reusable {
     
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!

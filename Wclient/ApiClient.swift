@@ -47,14 +47,10 @@ class ApiClientImplementation: ApiClient {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        var headers = [String: String]()
-        headers["Authorization"] = "Client-ID \(unsplashAppId)"
-        headers["Accept-Version"] = "v1"
-        
         let urlString = request.baseUrl + request.path
         
         sessionManager
-            .request(urlString, method: request.method, parameters: request.parameters, encoding: URLEncoding.default, headers: headers)
+            .request(urlString, method: request.method, parameters: request.parameters, encoding: URLEncoding.default, headers: nil)
             .validate(statusCode: 200...299)
             .responseJSON { response in
                 

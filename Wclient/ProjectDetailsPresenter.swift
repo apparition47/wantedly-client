@@ -1,5 +1,5 @@
 //
-//  PhotoDetailsPresenter.swift
+//  ProjectDetailsPresenter.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -9,66 +9,66 @@
 
 import Foundation
 
-protocol PhotoDetailsView: class {
+protocol ProjectDetailsView: class {
     func display(createdAt: String)
     func display(updatedAt: String)
     func display(dimensions: String)
     func display(likes: String)
     func display(description: String)
     func display(username: String)
-    func display(largePhotoUrl: String)
+    func display(largeProjectUrl: String)
 //    func display(dominantObject: String)
     func refreshKeywordsView()
 }
 
-protocol PhotoKeywordView {
+protocol ProjectKeywordView {
     func display(keyword: String)
 }
 
-protocol PhotoDetailsPresenter {
+protocol ProjectDetailsPresenter {
     var numberOfKeywords: Int { get }
-	var router: PhotoDetailsViewRouter { get }
+	var router: ProjectDetailsViewRouter { get }
 	func viewDidLoad()
-    func configure(cell: PhotoKeywordCell, forRow row: Int)
+    func configure(cell: ProjectKeywordCell, forRow row: Int)
     func didSelect(row: Int)
 }
 
-class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
-	fileprivate let photo: Photo
+class ProjectDetailsPresenterImplementation: ProjectDetailsPresenter {
+	fileprivate let Project: Project
     fileprivate var dominantCategory: String?
-    fileprivate let detectPhotoUseCase: DetectPhotoUseCase
-	let router: PhotoDetailsViewRouter
-	fileprivate weak var view: PhotoDetailsView?
+    fileprivate let detectProjectUseCase: DetectProjectUseCase
+	let router: ProjectDetailsViewRouter
+	fileprivate weak var view: ProjectDetailsView?
     
     var autoDetectedKeywords = [String]()
     var numberOfKeywords: Int {
         return autoDetectedKeywords.count
     }
     
-	init(view: PhotoDetailsView,
-         detectPhotoUseCase: DetectPhotoUseCase,
-	     photo: Photo,
-	     router: PhotoDetailsViewRouter) {
+	init(view: ProjectDetailsView,
+         detectProjectUseCase: DetectProjectUseCase,
+	     Project: Project,
+	     router: ProjectDetailsViewRouter) {
 		self.view = view
-        self.detectPhotoUseCase = detectPhotoUseCase
-		self.photo = photo
+        self.detectProjectUseCase = detectProjectUseCase
+		self.Project = Project
 		self.router = router
 	}
 	
 	func viewDidLoad() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        view?.display(createdAt: formatter.string(from: photo.createdAt))
-        view?.display(updatedAt: formatter.string(from: photo.updatedAt))
+        view?.display(createdAt: formatter.string(from: Project.createdAt))
+        view?.display(updatedAt: formatter.string(from: Project.updatedAt))
         
-        view?.display(dimensions: "\(photo.width) by \(photo.height)")
-        view?.display(likes: "\(photo.likes)")
-        view?.display(description: photo.description ?? "(N/A)")
-        view?.display(username: photo.username)
-        view?.display(largePhotoUrl: photo.urls.regular)
+        view?.display(dimensions: "\(Project.width) by \(Project.height)")
+        view?.display(likes: "\(Project.likes)")
+        view?.display(description: Project.description ?? "(N/A)")
+        view?.display(username: Project.username)
+        view?.display(largeProjectUrl: Project.urls.regular)
         
-        let params = DetectPhotoParameters(photoUrl: photo.urls.small)
-        self.detectPhotoUseCase.detectDominant(parameters: params) { [unowned self] result in
+        let params = DetectProjectParameters(ProjectUrl: Project.urls.small)
+        self.detectProjectUseCase.detectDominant(parameters: params) { [unowned self] result in
             switch result {
             case .success(let identifiers):
                 self.handleDetectionSuccess(identifiers)
@@ -78,7 +78,7 @@ class PhotoDetailsPresenterImplementation: PhotoDetailsPresenter {
         }
 	}
     
-    func configure(cell: PhotoKeywordCell, forRow row: Int) {
+    func configure(cell: ProjectKeywordCell, forRow row: Int) {
         let autoDetectedKeyword = autoDetectedKeywords[row]
         cell.display(keyword: autoDetectedKeyword)
     }

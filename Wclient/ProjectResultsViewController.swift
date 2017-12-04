@@ -1,5 +1,5 @@
 //
-//  PhotoResultsViewController.swift
+//  ProjectResultsViewController.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-final class PhotoResultsViewController: UICollectionViewController {
-    var configurator = PhotoResultsConfiguratorImplementation(query: "")
-    var presenter: PhotoResultsPresenter!
+final class ProjectResultsViewController: UICollectionViewController {
+    var configurator = ProjectResultsConfiguratorImplementation(query: "")
+    var presenter: ProjectResultsPresenter!
     var notificationFeedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configurator.configure(photoResultsViewController: self)
+        configurator.configure(ProjectResultsViewController: self)
         presenter.viewDidLoad()
         
         notificationFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -33,11 +33,11 @@ final class PhotoResultsViewController: UICollectionViewController {
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.numberOfPhotos
+        return presenter.numberOfProjects
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as ProjectCollectionViewCell
         presenter.configure(cell: cell, forRow: indexPath.row)
         
         return cell
@@ -60,9 +60,9 @@ final class PhotoResultsViewController: UICollectionViewController {
     }
 }
 
-// MARK: - PhotosView
+// MARK: - ProjectsView
 
-extension PhotoResultsViewController: PhotosView {
+extension ProjectResultsViewController: ProjectsView {
     func updateTitleBar(givenTitle: String) {
         if !givenTitle.isEmpty {
             searchBar.isHidden = true
@@ -71,13 +71,13 @@ extension PhotoResultsViewController: PhotosView {
         }
     }
     
-    func refreshPhotosView() {
+    func refreshProjectsView() {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
     }
     
-    func displayPhotosRetrievalError(title: String, message: String) {
+    func displayProjectsRetrievalError(title: String, message: String) {
         presentAlert(withTitle: title, message: message)
         notificationFeedbackGenerator?.notificationOccurred(.error)
     }
@@ -86,7 +86,7 @@ extension PhotoResultsViewController: PhotosView {
 
 // MARK: - Search
 
-extension PhotoResultsViewController: UISearchBarDelegate {
+extension ProjectResultsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let query = searchBar.text {
             presenter.didSearch(query, clearOldResults: true)

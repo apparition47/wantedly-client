@@ -1,5 +1,5 @@
 //
-//  SearchApiPhotosRequest.swift
+//  SearchApiProjectsRequest.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -9,32 +9,28 @@
 import Foundation
 import Alamofire
 
-struct SearchPhotosApiRequest: ApiRequest {
-    typealias ResponseType = DecodableArray<Photo>
+struct SearchProjectsApiRequest: ApiRequest {
+    typealias ResponseType = DecodableArray<Project>
 
-    let searchPhotosParameters: SearchPhotosParameters
+    let SearchProjectsParameters: SearchProjectsParameters
     
-    let path: String = "/search/photos"
+    let path = "projects"
     var parameters: [String: Any]? {
-        return searchPhotosParameters.toDictionary()
+        return SearchProjectsParameters.toDictionary()
     }
-    static let responseKeyPath: [String] = ["results"]
+    static let responseKeyPath: [String] = ["data"]
 }
 
-extension SearchPhotosParameters {
+extension SearchProjectsParameters {
     func toDictionary() -> [String: Any] {
         var dictionary = [String: Any]()
-        dictionary["query"] = query
         
         if let page = page {
             dictionary["page"] = page
         }
-        if let perPage = perPage {
-            dictionary["per_page"] = perPage
-        }
         
-        if let collections = collections {
-            dictionary["collections"] = collections
+        if let query = query {
+            dictionary["q"] = query
         }
         
         return dictionary

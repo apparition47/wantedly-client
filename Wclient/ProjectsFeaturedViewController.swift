@@ -1,5 +1,5 @@
 //
-//  PhotosFeaturedViewController.swift
+//  ProjectsFeaturedViewController.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/05.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-final class PhotosFeaturedViewController: UICollectionViewController {
-    var configurator = PhotosFeaturedConfiguratorImplementation()
-    var presenter: PhotosFeaturedPresenter!
+final class ProjectsFeaturedViewController: UICollectionViewController {
+    var configurator = ProjectsFeaturedConfiguratorImplementation()
+    var presenter: ProjectsFeaturedPresenter!
     var notificationFeedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configurator.configure(photosFeaturedViewController: self)
+        configurator.configure(ProjectsFeaturedViewController: self)
         presenter.viewDidLoad()
         
         notificationFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -34,11 +34,11 @@ final class PhotosFeaturedViewController: UICollectionViewController {
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.numberOfPhotos
+        return presenter.numberOfProjects
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as ProjectCollectionViewCell
         presenter.configure(cell: cell, forRow: indexPath.row)
         
         return cell
@@ -97,10 +97,10 @@ final class PhotosFeaturedViewController: UICollectionViewController {
     }
 }
 
-// MARK: - PhotosFeaturedView
+// MARK: - ProjectsFeaturedView
 
-extension PhotosFeaturedViewController: PhotosFeaturedView {
-    func refreshPhotosView() {
+extension ProjectsFeaturedViewController: ProjectsFeaturedView {
+    func refreshProjectsView() {
         presenter.didSnap(to: 0)
         
         DispatchQueue.main.async {
@@ -108,7 +108,7 @@ extension PhotosFeaturedViewController: PhotosFeaturedView {
         }
     }
     
-    func displayPhotosRetrievalError(title: String, message: String) {
+    func displayProjectsRetrievalError(title: String, message: String) {
         presentAlert(withTitle: title, message: message)
         
         notificationFeedbackGenerator?.notificationOccurred(.error)

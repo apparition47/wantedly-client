@@ -1,5 +1,5 @@
 //
-//  PhotoDetailsTableViewController.swift
+//  ProjectDetailsTableViewController.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/03.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class PhotoDetailsTableViewController: UITableViewController {
-	var presenter: PhotoDetailsPresenter!
-	var configurator: PhotoDetailsConfigurator!
+final class ProjectDetailsTableViewController: UITableViewController {
+	var presenter: ProjectDetailsPresenter!
+	var configurator: ProjectDetailsConfigurator!
 	
 	// MARK: - IBOutlets
     @IBOutlet weak var createdAtLabel: UILabel!
@@ -19,7 +19,7 @@ final class PhotoDetailsTableViewController: UITableViewController {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var dimensionsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var Project: UIImageView!
     @IBOutlet weak var keywordsView: UICollectionView!
     
     
@@ -28,7 +28,7 @@ final class PhotoDetailsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configurator.configure(photoDetailsTableViewController: self)
+		configurator.configure(ProjectDetailsTableViewController: self)
 		presenter.viewDidLoad()
         
         tableView.allowsSelection = false
@@ -43,13 +43,13 @@ final class PhotoDetailsTableViewController: UITableViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension PhotoDetailsTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ProjectDetailsTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.numberOfKeywords
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoKeywordCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as ProjectKeywordCell
         presenter.configure(cell: cell, forRow: indexPath.row)
         
         // pulse to indicate it's interactable
@@ -69,9 +69,9 @@ extension PhotoDetailsTableViewController: UICollectionViewDataSource, UICollect
     }
 }
 
-// MARK: - PhotoDetailsView
+// MARK: - ProjectDetailsView
 
-extension PhotoDetailsTableViewController: PhotoDetailsView {
+extension ProjectDetailsTableViewController: ProjectDetailsView {
     func display(createdAt: String) {
         createdAtLabel.text = createdAt
     }
@@ -96,8 +96,8 @@ extension PhotoDetailsTableViewController: PhotoDetailsView {
         usernameLabel.text = username
     }
     
-    func display(largePhotoUrl: String) {
-        photo.loadImageUsingCache(withUrl: largePhotoUrl)
+    func display(largeProjectUrl: String) {
+        Project.loadImageUsingCache(withUrl: largeProjectUrl)
     }
 
 //    func display(dominantObject: String) {

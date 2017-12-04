@@ -1,5 +1,5 @@
 //
-//  PhotoKeywordCell.swift
+//  ProjectKeywordCell.swift
 //  Wclient
 //
 //  Created by Aaron Lee on 2017/11/05.
@@ -9,7 +9,7 @@
 import UIKit
 import Reusable
 
-final class PhotoKeywordCell: UICollectionViewCell, PhotoKeywordView, Reusable {
+final class ProjectKeywordCell: UICollectionViewCell, ProjectKeywordView, Reusable {
     
     @IBOutlet weak var keywordButton: UILabel!
     
