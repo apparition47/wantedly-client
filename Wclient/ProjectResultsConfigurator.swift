@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ProjectResultsConfigurator {
-    func configure(ProjectResultsViewController: ProjectResultsViewController)
+    func configure(projectResultsViewController: ProjectResultsViewController)
 }
 
 class ProjectResultsConfiguratorImplementation: ProjectResultsConfigurator {
@@ -19,22 +19,22 @@ class ProjectResultsConfiguratorImplementation: ProjectResultsConfigurator {
         self.query = query
     }
     
-    func configure(ProjectResultsViewController: ProjectResultsViewController) {
+    func configure(projectResultsViewController: ProjectResultsViewController) {
         let apiClient = ApiClientImplementation(urlSessionConfiguration: URLSessionConfiguration.default,
                                                 completionHandlerQueue: OperationQueue.main)
         let apiProjectsGateway = ApiProjectsGatewayImplementation(apiClient: apiClient)
 
         
-        let ProjectsGateway = CacheProjectsGateway(apiProjectsGateway: apiProjectsGateway, mlGateway: mlGateway)
+        let projectsGateway = CacheProjectsGateway(apiProjectsGateway: apiProjectsGateway)
         
-        let searchProjectsUseCase = SearchProjectsUseCaseImplementation(ProjectsGateway: ProjectsGateway)
-        let router = ProjectResultsViewRouterImplementation(ProjectResultsViewController: ProjectResultsViewController)
+        let searchProjectsUseCase = SearchProjectsUseCaseImplementation(projectsGateway: projectsGateway)
+        let router = ProjectResultsViewRouterImplementation(projectResultsViewController: projectResultsViewController)
         
-        let presenter = ProjectResultsPresenterImplementation(view: ProjectResultsViewController,
+        let presenter = ProjectResultsPresenterImplementation(view: projectResultsViewController,
                                                      searchProjectsUseCase: searchProjectsUseCase,
                                                      query: query,
                                                      router: router)
         
-        ProjectResultsViewController.presenter = presenter
+        projectResultsViewController.presenter = presenter
     }
 }

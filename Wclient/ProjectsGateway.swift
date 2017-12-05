@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SearchProjectsEntityGatewayCompletionHandler = (_ Projects: Result<[Project]>) -> Void
+typealias SearchProjectsEntityGatewayCompletionHandler = (_ projects: Result<[Project]>) -> Void
 
 protocol ProjectsGateway {
     func search(parameters: SearchProjectsParameters, completionHandler: @escaping SearchProjectsEntityGatewayCompletionHandler)

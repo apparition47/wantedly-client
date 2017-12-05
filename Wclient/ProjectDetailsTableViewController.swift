@@ -28,7 +28,7 @@ final class ProjectDetailsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configurator.configure(ProjectDetailsTableViewController: self)
+		configurator.configure(projectDetailsTableViewController: self)
 		presenter.viewDidLoad()
         
         tableView.allowsSelection = false
@@ -45,28 +45,29 @@ final class ProjectDetailsTableViewController: UITableViewController {
 
 extension ProjectDetailsTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.numberOfKeywords
+//        return presenter.numberOfKeywords
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as ProjectKeywordCell
-        presenter.configure(cell: cell, forRow: indexPath.row)
+//        presenter.configure(cell: cell, forRow: indexPath.row)
         
         // pulse to indicate it's interactable
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: [], animations: {
-            cell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }, completion: {(_ finished: Bool) -> Void in
-            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 5, options: [], animations: {
-                cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        })
+//        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: [], animations: {
+//            cell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+//        }, completion: {(_ finished: Bool) -> Void in
+//            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 5, options: [], animations: {
+//                cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+//            })
+//        })
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.didSelect(row: indexPath.row)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        presenter.didSelect(row: indexPath.row)
+//    }
 }
 
 // MARK: - ProjectDetailsView

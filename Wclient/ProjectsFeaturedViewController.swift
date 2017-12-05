@@ -16,7 +16,7 @@ final class ProjectsFeaturedViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configurator.configure(ProjectsFeaturedViewController: self)
+        configurator.configure(projectsFeaturedViewController: self)
         presenter.viewDidLoad()
         
         notificationFeedbackGenerator = UINotificationFeedbackGenerator()

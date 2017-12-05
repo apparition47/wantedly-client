@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProjectResultsViewRouter: ViewRouter {
-    func presentDetailsView(for Project: Project)
+    func presentDetailsView(for project: Project)
 }
 
 class ProjectResultsViewRouterImplementation: ProjectResultsViewRouter {
@@ -17,23 +17,23 @@ class ProjectResultsViewRouterImplementation: ProjectResultsViewRouter {
         static let ProjectsSceneToProjectDetailsScene = "ProjectsSceneToProjectDetailsSceneSegue"
     }
     
-    fileprivate weak var ProjectResultsViewController: ProjectResultsViewController?
-    fileprivate var Project: Project!
+    fileprivate weak var projectResultsViewController: ProjectResultsViewController?
+    fileprivate var project: Project!
     
-    init(ProjectResultsViewController: ProjectResultsViewController) {
-        self.ProjectResultsViewController = ProjectResultsViewController
+    init(projectResultsViewController: ProjectResultsViewController) {
+        self.projectResultsViewController = projectResultsViewController
     }
     
     // MARK: - ProjectsViewRouter
     
-    func presentDetailsView(for Project: Project) {
-        self.Project = Project
-        ProjectResultsViewController?.performSegue(withIdentifier: Segue.ProjectsSceneToProjectDetailsScene, sender: nil)
+    func presentDetailsView(for project: Project) {
+        self.project = project
+        projectResultsViewController?.performSegue(withIdentifier: Segue.ProjectsSceneToProjectDetailsScene, sender: nil)
     }
 
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let ProjectDetailsTableViewController = segue.destination as? ProjectDetailsTableViewController {
-            ProjectDetailsTableViewController.configurator = ProjectDetailsConfiguratorImplementation(Project: Project)
+        if let projectDetailsTableViewController = segue.destination as? ProjectDetailsTableViewController {
+            projectDetailsTableViewController.configurator = ProjectDetailsConfiguratorImplementation(project: project)
         }
     }
     

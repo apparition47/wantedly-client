@@ -18,27 +18,27 @@ class ProjectDetailsViewRouterImplementation: ProjectDetailsViewRouter {
         static let ProjectDetailsSceneToProjectSearchSceneSegue = "ProjectDetailsSceneToProjectSearchSceneSegue"
     }
     
-	fileprivate weak var ProjectDetailsTableViewController: ProjectDetailsTableViewController?
+	fileprivate weak var projectDetailsTableViewController: ProjectDetailsTableViewController?
     fileprivate var query: String!
 	
-	init(ProjectDetailsTableViewController: ProjectDetailsTableViewController) {
-		self.ProjectDetailsTableViewController = ProjectDetailsTableViewController
+	init(projectDetailsTableViewController: ProjectDetailsTableViewController) {
+		self.projectDetailsTableViewController = projectDetailsTableViewController
 	}
 	
 	func dismissView() {
-		let _ = ProjectDetailsTableViewController?.navigationController?.popViewController(animated: true)
+		let _ = projectDetailsTableViewController?.navigationController?.popViewController(animated: true)
 	}
     
     // MARK: - ProjectsViewRouter
     
     func presentSearchView(for query: String) {
         self.query = query
-        ProjectDetailsTableViewController?.performSegue(withIdentifier: Segue.ProjectDetailsSceneToProjectSearchSceneSegue, sender: nil)
+        projectDetailsTableViewController?.performSegue(withIdentifier: Segue.ProjectDetailsSceneToProjectSearchSceneSegue, sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let ProjectResultsViewController = segue.destination as? ProjectResultsViewController {
-            ProjectResultsViewController.configurator = ProjectResultsConfiguratorImplementation(query: query)
+        if let projectResultsViewController = segue.destination as? ProjectResultsViewController {
+            projectResultsViewController.configurator = ProjectResultsConfiguratorImplementation(query: query)
         }
     }
 }

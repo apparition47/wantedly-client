@@ -40,7 +40,6 @@
 		739D8A231FAD8998000B279B /* ProjectsFeaturedViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A221FAD8998000B279B /* ProjectsFeaturedViewRouter.swift */; };
 		739D8A251FAD8A3B000B279B /* ProjectsFeaturedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A241FAD8A3B000B279B /* ProjectsFeaturedPresenter.swift */; };
 		739D8A2A1FADC43B000B279B /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A291FADC43B000B279B /* UIColor+Hex.swift */; };
-		9BF32FD7C7B9D8DB559879F6 /* Pods_PhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE2C8C3185F48745A2137E6 /* Pods_PhotoViewer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BF32FD7C7B9D8DB559879F6 /* Pods_PhotoViewer.framework in Frameworks */,
 				52DB66D42679E531FBE5279C /* Pods_Wclient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,22 +26,22 @@ protocol ProjectsFeaturedPresenter {
 
 class ProjectsFeaturedPresenterImplementation: ProjectsFeaturedPresenter {
     fileprivate weak var view: ProjectsFeaturedView?
-    fileprivate let getProjectsUseCase: GetProjectsUseCase
+    fileprivate let getProjectsUseCase: SearchProjectsUseCase
     internal let router: ProjectsFeaturedViewRouter
     
     // Normally this would be file private as well, we keep it internal so we can inject values for testing purposes
-    var Projects = [Project]()
+    var projects = [Project]()
     
     private var currentPage = 0
     private let pageSize = 5
     private var lastSearchQuery = ""
     
     var numberOfProjects: Int {
-        return Projects.count
+        return projects.count
     }
     
     init(view: ProjectsFeaturedView,
-         getProjectsUseCase: GetProjectsUseCase,
+         getProjectsUseCase: SearchProjectsUseCase,
          router: ProjectsFeaturedViewRouter) {
         self.view = view
         self.getProjectsUseCase = getProjectsUseCase
@@ -56,23 +56,23 @@ class ProjectsFeaturedPresenterImplementation: ProjectsFeaturedPresenter {
     }
     
     func configure(cell: ProjectCollectionViewCell, forRow row: Int) {
-        let Project = Projects[row]
+        let project = projects[row]
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        cell.display(createdAt: formatter.string(from: Project.createdAt))
-        cell.display(username: Project.username)
-        cell.display(thumbnailUrl: Project.urls.small)
+        cell.display(createdAt: formatter.string(from: project.publishedAt))
+        cell.display(username: project.title)
+        cell.display(thumbnailUrl: project.images.original)
     }
     
     func didSelect(row: Int) {
-        let Project = Projects[row]
+        let project = projects[row]
         
-        router.presentDetailsView(for: Project)
+        router.presentDetailsView(for: project)
     }
 
     func didSnap(to row: Int) {
-        view?.updateBackground(hexColour: Projects[row].colour)
+//        view?.updateBackground(hexColour: projects[row].colour)
     }
     
     func didScrollViewToEnd() {
@@ -82,12 +82,12 @@ class ProjectsFeaturedPresenterImplementation: ProjectsFeaturedPresenter {
     // MARK: - Private
     private func fetchProjects() {
         currentPage += 1
-        let params: FetchProjectsParameters = FetchProjectsParameters(page: currentPage, perPage: pageSize, orderBy: OrderBy.Latest)
+        let params: SearchProjectsParameters = SearchProjectsParameters(query: nil, page: currentPage)
 
-        getProjectsUseCase.fetchProjects(parameters: params) { result in
+        getProjectsUseCase.search(parameters: params) { result in
             switch result {
-            case let .success(Projects):
-                self.handleProjectsReceived(Projects)
+            case let .success(projects):
+                self.handleProjectsReceived(projects)
             case let .failure(error):
                 self.currentPage -= 1
                 self.handleProjectsError(error)
@@ -95,8 +95,8 @@ class ProjectsFeaturedPresenterImplementation: ProjectsFeaturedPresenter {
         }
     }
     
-    fileprivate func handleProjectsReceived(_ Projects: [Project]) {
-        self.Projects += Projects
+    fileprivate func handleProjectsReceived(_ projects: [Project]) {
+        self.projects += projects
         view?.refreshProjectsView()
     }
     

@@ -10,27 +10,23 @@
 import Foundation
 
 protocol ProjectDetailsConfigurator {
-	func configure(ProjectDetailsTableViewController: ProjectDetailsTableViewController)
+	func configure(projectDetailsTableViewController: ProjectDetailsTableViewController)
 }
 
 class ProjectDetailsConfiguratorImplementation: ProjectDetailsConfigurator {
-	let Project: Project
+	let project: Project
 	
-	init(Project: Project) {
-		self.Project = Project
+	init(project: Project) {
+		self.project = project
 	}
 	
-	func configure(ProjectDetailsTableViewController: ProjectDetailsTableViewController) {
-		let router = ProjectDetailsViewRouterImplementation(ProjectDetailsTableViewController: ProjectDetailsTableViewController)
+	func configure(projectDetailsTableViewController: ProjectDetailsTableViewController) {
+		let router = ProjectDetailsViewRouterImplementation(projectDetailsTableViewController: projectDetailsTableViewController)
 		
-        let mlGateway = MLGatewayImplementation()
-        let detectProjectUseCase = DetectProjectUseCaseImplementation(mlGateway: mlGateway)
-        
-        let presenter = ProjectDetailsPresenterImplementation(view: ProjectDetailsTableViewController,
-                                                            detectProjectUseCase: detectProjectUseCase,
-		                                     Project: Project,
+        let presenter = ProjectDetailsPresenterImplementation(view: projectDetailsTableViewController,
+		                                     project: project,
 		                                     router: router)
 
-		ProjectDetailsTableViewController.presenter = presenter
+		projectDetailsTableViewController.presenter = presenter
 	}
 }

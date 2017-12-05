@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProjectsFeaturedViewRouter: ViewRouter {
-    func presentDetailsView(for Project: Project)
+    func presentDetailsView(for project: Project)
 }
 
 class ProjectsFeaturedViewRouterImplementation: ProjectsFeaturedViewRouter {
@@ -17,23 +17,23 @@ class ProjectsFeaturedViewRouterImplementation: ProjectsFeaturedViewRouter {
         static let ProjectsFeaturedSceneToProjectDetailsScene = "ProjectsFeaturedSceneToProjectDetailsSceneSegue"
     }
     
-    fileprivate weak var ProjectsFeaturedViewController: ProjectsFeaturedViewController?
-    fileprivate var Project: Project!
+    fileprivate weak var projectsFeaturedViewController: ProjectsFeaturedViewController?
+    fileprivate var project: Project!
     
-    init(ProjectsFeaturedViewController: ProjectsFeaturedViewController) {
-        self.ProjectsFeaturedViewController = ProjectsFeaturedViewController
+    init(projectsFeaturedViewController: ProjectsFeaturedViewController) {
+        self.projectsFeaturedViewController = projectsFeaturedViewController
     }
     
     // MARK: - ProjectsViewRouter
     
-    func presentDetailsView(for Project: Project) {
-        self.Project = Project
-        ProjectsFeaturedViewController?.performSegue(withIdentifier: Segue.ProjectsFeaturedSceneToProjectDetailsScene, sender: nil)
+    func presentDetailsView(for project: Project) {
+        self.project = project
+        projectsFeaturedViewController?.performSegue(withIdentifier: Segue.ProjectsFeaturedSceneToProjectDetailsScene, sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let ProjectDetailsTableViewController = segue.destination as? ProjectDetailsTableViewController {
-            ProjectDetailsTableViewController.configurator = ProjectDetailsConfiguratorImplementation(Project: Project)
+        if let projectDetailsTableViewController = segue.destination as? ProjectDetailsTableViewController {
+            projectDetailsTableViewController.configurator = ProjectDetailsConfiguratorImplementation(project: project)
         }
     }
     

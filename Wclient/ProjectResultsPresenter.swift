@@ -37,13 +37,13 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
     internal let router: ProjectResultsViewRouter
     
     // Normally this would be file private as well, we keep it internal so we can inject values for testing purposes
-    var Projects = [Project]()
+    var projects = [Project]()
     
     private var currentPage = 0
     private let pageSize = 10
     
     var numberOfProjects: Int {
-        return Projects.count
+        return projects.count
     }
     
     init(view: ProjectsView,
@@ -65,17 +65,17 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
     }
     
     func configure(cell: ProjectCellView, forRow row: Int) {
-        let Project = Projects[row]
+        let project = projects[row]
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        cell.display(createdAt: formatter.string(from: Project.createdAt))
-        cell.display(username: Project.username)
-        cell.display(thumbnailUrl: Project.urls.thumb)
+        cell.display(createdAt: formatter.string(from: project.publishedAt))
+        cell.display(username: project.title)
+        cell.display(thumbnailUrl: project.images.original)
     }
     
     func didSelect(row: Int) {
-        let Project = Projects[row]
+        let Project = projects[row]
         
         router.presentDetailsView(for: Project)
     }
@@ -85,16 +85,16 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
         
         if clearOldResults {
             currentPage = 0
-            Projects.removeAll()
+            projects.removeAll()
         }
         
         currentPage += 1
         
-        let params = SearchProjectsParameters(query: query, page: currentPage, perPage: pageSize, collections: nil)
+        let params = SearchProjectsParameters(query: query, page: currentPage)
         self.searchProjectsUseCase.search(parameters: params) { result in
             switch result {
-            case let .success(Projects):
-                self.handleProjectsSearched(Projects: Projects)
+            case let .success(projects):
+                self.handleProjectsSearched(projects: projects)
             case let .failure(error):
                 self.currentPage -= 1
                 self.handleProjectsError(error)
@@ -108,8 +108,8 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
 
     // MARK: - Private
     
-    fileprivate func handleProjectsReceived(_ Projects: [Project]) {
-        self.Projects += Projects
+    fileprivate func handleProjectsReceived(_ projects: [Project]) {
+        self.projects += projects
         view?.refreshProjectsView()
     }
     
@@ -118,8 +118,8 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
         view?.displayProjectsRetrievalError(title: "Error", message: error.localizedDescription)
     }
     
-    fileprivate func handleProjectsSearched(Projects: [Project]) {
-        self.Projects += Projects
+    fileprivate func handleProjectsSearched(projects: [Project]) {
+        self.projects += projects
         view?.refreshProjectsView()
     }
 }

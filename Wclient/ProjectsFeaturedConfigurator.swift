@@ -9,25 +9,24 @@
 import Foundation
 
 protocol ProjectsFeaturedConfigurator {
-    func configure(ProjectsFeaturedViewController: ProjectsFeaturedViewController)
+    func configure(projectsFeaturedViewController: ProjectsFeaturedViewController)
 }
 
 class ProjectsFeaturedConfiguratorImplementation: ProjectsFeaturedConfigurator {
-    func configure(ProjectsFeaturedViewController: ProjectsFeaturedViewController) {
+    func configure(projectsFeaturedViewController: ProjectsFeaturedViewController) {
         let apiClient = ApiClientImplementation(urlSessionConfiguration: URLSessionConfiguration.default,
                                                 completionHandlerQueue: OperationQueue.main)
         let apiProjectsGateway = ApiProjectsGatewayImplementation(apiClient: apiClient)
-        let mlGateway = MLGatewayImplementation()
         
-        let ProjectsGateway = CacheProjectsGateway(apiProjectsGateway: apiProjectsGateway, mlGateway: mlGateway)
+        let ProjectsGateway = CacheProjectsGateway(apiProjectsGateway: apiProjectsGateway)
         
-        let fetchProjectsUseCase = GetProjectsUseCaseImplementation(ProjectsGateway: ProjectsGateway)
-        let router = ProjectsFeaturedViewRouterImplementation(ProjectsFeaturedViewController: ProjectsFeaturedViewController)
+        let fetchProjectsUseCase = SearchProjectsUseCaseImplementation(projectsGateway: ProjectsGateway)
+        let router = ProjectsFeaturedViewRouterImplementation(projectsFeaturedViewController: projectsFeaturedViewController)
         
-        let presenter = ProjectsFeaturedPresenterImplementation(view: ProjectsFeaturedViewController,
+        let presenter = ProjectsFeaturedPresenterImplementation(view: projectsFeaturedViewController,
                                                               getProjectsUseCase: fetchProjectsUseCase,
                                                               router: router)
         
-        ProjectsFeaturedViewController.presenter = presenter
+        projectsFeaturedViewController.presenter = presenter
     }
 }
