@@ -1,0 +1,6 @@
+framework module Pods_Wclient {
+  umbrella header "Pods-Wclient-umbrella.h"
+
+  export *
+  module * { export * }
+}
