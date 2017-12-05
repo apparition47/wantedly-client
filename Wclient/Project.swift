@@ -23,7 +23,7 @@ struct Project {
     let addressSuffix: String?
     let description: String?
     let hiring: String
-    let images: ImageUrl
+    let images: ImageUrl?
 //    let tags: [String] // TODO unsure of object type
 //    let categoryImages: [String] // TODO unsure of object type
     let categoryMessage: String
@@ -34,7 +34,7 @@ struct Project {
     let canSupport: Bool
     let didSupport: Bool
     let canBookmark: Bool
-    let leader: Leader
+    let leader: Leader?
     let hasVideo: Bool
 }
 
@@ -58,7 +58,7 @@ extension Project: Decodable {
             addressSuffix: json =>? "location_suffix",
             description: json =>? "description",
             hiring: json => "looking_for",
-            images: json => "image",
+            images: json =>? "image",
 //            tags: json => "tags",
 //            categoryImages: json => "category_images",
             categoryMessage: json => "category_message",
@@ -69,7 +69,7 @@ extension Project: Decodable {
             canSupport: json => "can_support",
             didSupport: json => "supported",
             canBookmark: json => "can_bookmark",
-            leader: json => "leader",
+            leader: json =>? "leader",
             hasVideo: json => "video_available"
         )
     }
@@ -120,8 +120,8 @@ struct Company {
     let payrollNumber: Int?
     let addressPrefix: String?
     let addressSuffix: String?
-    let latitude: Double?
-    let longitude: Double?
+//    let latitude: Double?
+//    let longitude: Double?
     let url: String?
     let avatar: Avatar?
 }
@@ -136,8 +136,8 @@ extension Company: Decodable {
             payrollNumber: json =>? "payroll_number",
             addressPrefix: json =>? "address_prefix",
             addressSuffix: json =>? "address_suffix",
-            latitude: json =>? "latitude",
-            longitude: json =>? "longitude",
+//            latitude: json =>? "latitude",
+//            longitude: json =>? "longitude",
             url: json =>? "url",
             avatar: json =>? "avatar"
         )

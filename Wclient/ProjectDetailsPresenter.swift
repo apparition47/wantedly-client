@@ -17,8 +17,6 @@ protocol ProjectDetailsView: class {
     func display(description: String)
     func display(username: String)
     func display(largeProjectUrl: String)
-//    func display(dominantObject: String)
-//    func refreshKeywordsView()
 }
 
 protocol ProjectKeywordView {
@@ -50,6 +48,8 @@ class ProjectDetailsPresenterImplementation: ProjectDetailsPresenter {
         view?.display(likes: "\(project.supporterCount)")
         view?.display(description: project.description ?? "N/A")
         view?.display(username: project.title)
-        view?.display(largeProjectUrl: project.images.original)
+        if let iUrl = project.images?.original {
+            view?.display(largeProjectUrl: iUrl)
+        }
 	}
 }

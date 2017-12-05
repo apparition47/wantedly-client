@@ -60,7 +60,9 @@ class ProjectsFeaturedPresenterImplementation: ProjectsFeaturedPresenter {
 
         cell.display(createdAt: project.hiring)
         cell.display(username: project.title)
-        cell.display(thumbnailUrl: project.images.icon304Retina)
+        if let iUrl = project.images?.icon304Retina {
+            cell.display(thumbnailUrl: iUrl)
+        }
     }
     
     func didSelect(row: Int) {

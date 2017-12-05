@@ -67,7 +67,9 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
         
         cell.display(createdAt: project.hiring)
         cell.display(username: project.title)
-        cell.display(thumbnailUrl: project.images.icon105Retina)
+        if let iUrl = project.images?.icon105Retina {
+            cell.display(thumbnailUrl: iUrl)
+        }
     }
     
     func didSelect(row: Int) {
