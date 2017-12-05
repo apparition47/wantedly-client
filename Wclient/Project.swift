@@ -13,19 +13,19 @@ import enum Decodable.DecodingError
 import struct Decodable.KeyPath
 
 struct Project {
-    let id: String
+    let id: Int
     let title: String
-    let publishedAt: Date
+    let publishedAt: String // TODO decode date
     let supporterCount: Int
     let pageViews: Int
     let candidateCount: Int
     let address: String
-    let addressSuffix: String
-    let description: String
+    let addressSuffix: String?
+    let description: String?
     let hiring: String
     let images: ImageUrl
-    let tags: [String]
-    let categoryImages: [String]
+//    let tags: [String] // TODO unsure of object type
+//    let categoryImages: [String] // TODO unsure of object type
     let categoryMessage: String
     let shouldUseWebView: Bool
     let company: Company
@@ -50,17 +50,17 @@ extension Project: Decodable {
         return try Project(
             id: json => "id",
             title: json => "title",
-            publishedAt: Date.decode(json => "published_at"),
+            publishedAt: json => "published_at",
             supporterCount: json => "support_count",
             pageViews: json => "page_view",
             candidateCount: json => "candidate_count",
             address: json => "location",
-            addressSuffix: json => "location_suffix",
-            description: json => "description",
+            addressSuffix: json =>? "location_suffix",
+            description: json =>? "description",
             hiring: json => "looking_for",
             images: json => "image",
-            tags: json => "tags",
-            categoryImages: json => "category_image",
+//            tags: json => "tags",
+//            categoryImages: json => "category_images",
             categoryMessage: json => "category_message",
             shouldUseWebView: json => "use_webview",
             company: json => "company",
@@ -115,15 +115,15 @@ extension ImageUrl: Decodable {
 struct Company {
     let id: Int
     let name: String
-    let founder: String
-    let foundedOn: String // TODO parse as YYYY-MM-DD NSDate
-    let payrollNumber: Int
-    let addressPrefix: String
-    let addressSuffix: String
-    let latitude: Double
-    let longitude: Double
-    let url: String
-    let avatar: Avatar
+    let founder: String?
+    let foundedOn: String? // TODO parse as YYYY-MM-DD NSDate
+    let payrollNumber: Int?
+    let addressPrefix: String?
+    let addressSuffix: String?
+    let latitude: Double?
+    let longitude: Double?
+    let url: String?
+    let avatar: Avatar?
 }
 
 extension Company: Decodable {
@@ -131,21 +131,21 @@ extension Company: Decodable {
         return try Company(
             id: json => "id",
             name: json => "name",
-            founder: json => "founder",
-            foundedOn: json => "small",
-            payrollNumber: json => "payroll_number",
-            addressPrefix: json => "address_prefix",
-            addressSuffix: json => "address_suffix",
-            latitude: json => "latitude",
-            longitude: json => "longitude",
-            url: json => "url",
-            avatar: json => "avatar"
+            founder: json =>? "founder",
+            foundedOn: json =>? "founded_on",
+            payrollNumber: json =>? "payroll_number",
+            addressPrefix: json =>? "address_prefix",
+            addressSuffix: json =>? "address_suffix",
+            latitude: json =>? "latitude",
+            longitude: json =>? "longitude",
+            url: json =>? "url",
+            avatar: json =>? "avatar"
         )
     }
 }
 
 struct Avatar {
-    let original: Int
+    let original: String
     let size20: String
     let size30: String
     let size40: String
@@ -158,12 +158,12 @@ extension Avatar: Decodable {
     static func decode(_ json: Any) throws -> Avatar {
         return try Avatar(
             original: json => "original",
-            size20: json => "s20",
-            size30: json => "s30",
-            size40: json => "s40",
-            size50: json => "s50",
-            size60: json => "s60",
-            size100: json => "s100"
+            size20: json => "s_20",
+            size30: json => "s_30",
+            size40: json => "s_40",
+            size50: json => "s_50",
+            size60: json => "s_60",
+            size100: json => "s_100"
         )
     }
 }
@@ -172,7 +172,7 @@ struct Staff {
     let userId: Int
     let isLeader: Bool
     let name: String
-    let facebookUid: String
+    let facebookUid: String?
     let description: String?
 }
 
@@ -182,24 +182,24 @@ extension Staff: Decodable {
             userId: json => "user_id",
             isLeader: json => "is_leader",
             name: json => "name",
-            facebookUid: json => "facebook_uid",
+            facebookUid: json =>? "facebook_uid",
             description: json =>? "description"
         )
     }
 }
 
 struct Leader {
-    let nameJa: Int
-    let nameEn: Bool
-    let facebookUid: String
+    let nameJa: String?
+    let nameEn: String?
+    let facebookUid: String?
 }
 
 extension Leader: Decodable {
     static func decode(_ json: Any) throws -> Leader {
         return try Leader(
-            nameJa: json => "name_ja",
-            nameEn: json => "name_en",
-            facebookUid: json => "facebook_uid"
+            nameJa: json =>? "name_ja",
+            nameEn: json =>? "name_en",
+            facebookUid: json =>? "facebook_uid"
         )
     }
 }
