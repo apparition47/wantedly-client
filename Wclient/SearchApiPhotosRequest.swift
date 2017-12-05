@@ -14,7 +14,7 @@ struct SearchProjectsApiRequest: ApiRequest {
 
     let SearchProjectsParameters: SearchProjectsParameters
     
-    let path = "projects"
+    let path = "/projects"
     var parameters: [String: Any]? {
         return SearchProjectsParameters.toDictionary()
     }
