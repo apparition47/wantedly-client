@@ -9,7 +9,6 @@
 import Foundation
 
 protocol ProjectsView: class {
-    func updateTitleBar(givenTitle: String)
     func refreshProjectsView()
     func displayProjectsRetrievalError(title: String, message: String)
 }
@@ -60,24 +59,21 @@ class ProjectResultsPresenterImplementation: ProjectResultsPresenter {
     // MARK: - ProjectsPresenter
     
     func viewDidLoad() {
-        view?.updateTitleBar(givenTitle: query)
         didSearch(query, clearOldResults: true)
     }
     
     func configure(cell: ProjectCellView, forRow row: Int) {
         let project = projects[row]
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        cell.display(createdAt: formatter.string(from: project.publishedAt))
+        cell.display(createdAt: project.hiring)
         cell.display(username: project.title)
-        cell.display(thumbnailUrl: project.images.original)
+        cell.display(thumbnailUrl: project.images.icon105Retina)
     }
     
     func didSelect(row: Int) {
-        let Project = projects[row]
+        let project = projects[row]
         
-        router.presentDetailsView(for: Project)
+        router.presentDetailsView(for: project)
     }
     
     func didSearch(_ query: String, clearOldResults: Bool) {

@@ -19,7 +19,7 @@ final class ProjectDetailsTableViewController: UITableViewController {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var dimensionsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var Project: UIImageView!
+    @IBOutlet weak var project: UIImageView!
     @IBOutlet weak var keywordsView: UICollectionView!
     
     
@@ -51,23 +51,9 @@ extension ProjectDetailsTableViewController: UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as ProjectKeywordCell
-//        presenter.configure(cell: cell, forRow: indexPath.row)
-        
-        // pulse to indicate it's interactable
-//        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: [], animations: {
-//            cell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-//        }, completion: {(_ finished: Bool) -> Void in
-//            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 5, options: [], animations: {
-//                cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-//            })
-//        })
-        
+
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        presenter.didSelect(row: indexPath.row)
-//    }
 }
 
 // MARK: - ProjectDetailsView
@@ -98,13 +84,9 @@ extension ProjectDetailsTableViewController: ProjectDetailsView {
     }
     
     func display(largeProjectUrl: String) {
-        Project.loadImageUsingCache(withUrl: largeProjectUrl)
+        project.loadImageUsingCache(withUrl: largeProjectUrl)
     }
 
-//    func display(dominantObject: String) {
-//        dominantObjectLabel.text = dominantObject
-//    }
-    
     func refreshKeywordsView() {
         DispatchQueue.main.async {
             self.keywordsView.reloadData()

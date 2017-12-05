@@ -57,12 +57,10 @@ class ProjectsFeaturedPresenterImplementation: ProjectsFeaturedPresenter {
     
     func configure(cell: ProjectCollectionViewCell, forRow row: Int) {
         let project = projects[row]
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        cell.display(createdAt: formatter.string(from: project.publishedAt))
+
+        cell.display(createdAt: project.hiring)
         cell.display(username: project.title)
-        cell.display(thumbnailUrl: project.images.original)
+        cell.display(thumbnailUrl: project.images.icon304Retina)
     }
     
     func didSelect(row: Int) {

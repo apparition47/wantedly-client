@@ -63,14 +63,6 @@ final class ProjectResultsViewController: UICollectionViewController {
 // MARK: - ProjectsView
 
 extension ProjectResultsViewController: ProjectsView {
-    func updateTitleBar(givenTitle: String) {
-        if !givenTitle.isEmpty {
-            searchBar.isHidden = true
-            // TODO fix viewcontroller titling
-//            title = givenTitle
-        }
-    }
-    
     func refreshProjectsView() {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
