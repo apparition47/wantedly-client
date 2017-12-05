@@ -1,23 +1,19 @@
-# PhotoViewer
+# Wclient
 
-An [Unsplash](https://unsplash.com) photo viewer written in Swift.
+A [Wantedly](https://www.wantedly.com) project viewer written in Swift.
 
-![Demo](https://user-images.githubusercontent.com/3298414/32414948-7c924f36-c274-11e7-9524-6237b8eccc1a.gif)
+![Demo](https://user-images.githubusercontent.com/3298414/33610882-f6ce2f24-da0f-11e7-9b93-ece869ac2ec2.gif)
 
 
 ## Features
 
 * [Clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html).
-* Implemented Unsplash API functions: [get latest photos, search for photos by keywords](https://unsplash.com/documentation#list-photos).
-* Uses the [Inception Core ML Model (94.7MB 😨)](https://developer.apple.com/machine-learning/) to detect the dominant object in the photo. Tap on the keyword to search for even more photos.
+* Implemented the following API functions: search for projects by keywords
+* Screens: Featured projects, search for projects, detailed info
+* Infinite scroll, haptics
 
 ## Usage
 
-Tested with Xcode 9.1, Swift 4, iOS 11.
+Tested with Xcode 9.2, Swift 4, iOS 11.
 
 1. All dependencies and pods included in the zip. Build and run.
-
-
-### 403 Errors?
-
-The included [Unsplash API key](https://unsplash.com/oauth/applications) is rate limited to 50 requests per hour 😔
