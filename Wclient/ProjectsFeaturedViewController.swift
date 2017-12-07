@@ -115,8 +115,8 @@ extension ProjectsFeaturedViewController: ProjectsFeaturedView {
     }
     
     func updateBackground(hexColour: String) {
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseInOut], animations: {
-            self.collectionView?.backgroundColor = UIColor(hex: hexColour)
-        })
+//        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseInOut], animations: {
+//            self.collectionView?.backgroundColor = UIColor(hex: hexColour)
+//        })
     }
 }

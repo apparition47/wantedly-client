@@ -12,11 +12,11 @@ import Alamofire
 struct SearchProjectsApiRequest: ApiRequest {
     typealias ResponseType = DecodableArray<Project>
 
-    let SearchProjectsParameters: SearchProjectsParameters
+    let searchProjectsParameters: SearchProjectsParameters
     
     let path = "/projects"
     var parameters: [String: Any]? {
-        return SearchProjectsParameters.toDictionary()
+        return searchProjectsParameters.toDictionary()
     }
     static let responseKeyPath: [String] = ["data"]
 }

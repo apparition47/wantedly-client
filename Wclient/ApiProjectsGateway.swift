@@ -23,8 +23,8 @@ class ApiProjectsGatewayImplementation: ApiProjectsGateway {
     // MARK: - ApiProjectsGateway
     
     func search(parameters: SearchProjectsParameters, completionHandler: @escaping SearchProjectsEntityGatewayCompletionHandler) {
-        let ProjectsApiRequest = SearchProjectsApiRequest(SearchProjectsParameters: parameters)
-        apiClient.execute(ProjectsApiRequest) { (result: Result<SearchProjectsApiRequest.ResponseType>) in
+        let projectsApiRequest = SearchProjectsApiRequest(searchProjectsParameters: parameters)
+        apiClient.execute(projectsApiRequest) { (result: Result<SearchProjectsApiRequest.ResponseType>) in
             switch result {
             case let .success(response):
                 completionHandler(.success(response.array))

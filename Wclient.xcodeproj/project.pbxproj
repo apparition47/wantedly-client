@@ -24,10 +24,9 @@
 		733239781F53094800E9AC7B /* ProjectDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239741F53094800E9AC7B /* ProjectDetailsTableViewController.swift */; };
 		733239791F53094800E9AC7B /* ProjectDetailsViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733239751F53094800E9AC7B /* ProjectDetailsViewRouter.swift */; };
 		7332397B1F5315C700E9AC7B /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332397A1F5315C700E9AC7B /* ProjectCollectionViewCell.swift */; };
-		7333A3EA1F5ACFEB00996C84 /* SearchApiPhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */; };
+		7333A3EA1F5ACFEB00996C84 /* SearchApiProjectsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3E91F5ACFEB00996C84 /* SearchApiProjectsRequest.swift */; };
 		7333A3EC1F5AD45F00996C84 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */; };
 		734AF5E61FAEEC4F00C7099B /* ProjectsFeaturedConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AF5E51FAEEC4F00C7099B /* ProjectsFeaturedConfigurator.swift */; };
-		734AF5E81FAF287E00C7099B /* ProjectKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734AF5E71FAF287E00C7099B /* ProjectKeywordCell.swift */; };
 		734BA0FF1F5C03A00006B3D4 /* CacheProjectsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734BA0FE1F5C03A00006B3D4 /* CacheProjectsGateway.swift */; };
 		7370A2261F682B400062C4F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370A2251F682B400062C4F9 /* Constants.swift */; };
 		737FF4111F585CF3007329B2 /* SearchProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737FF4101F585CF3007329B2 /* SearchProjects.swift */; };
@@ -39,7 +38,7 @@
 		739D8A211FAD87E3000B279B /* ProjectsFeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A201FAD87E3000B279B /* ProjectsFeaturedViewController.swift */; };
 		739D8A231FAD8998000B279B /* ProjectsFeaturedViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A221FAD8998000B279B /* ProjectsFeaturedViewRouter.swift */; };
 		739D8A251FAD8A3B000B279B /* ProjectsFeaturedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A241FAD8A3B000B279B /* ProjectsFeaturedPresenter.swift */; };
-		739D8A2A1FADC43B000B279B /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D8A291FADC43B000B279B /* UIColor+Hex.swift */; };
+		73BFFFB71FD8DCEF0000080B /* ProjectKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BFFFB61FD8DCEF0000080B /* ProjectKeywordCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22C9B2CDA63A29FC8790DB88 /* Pods_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3D6B7F1E61A37400CF7881 /* UIViewController-Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-Alert.swift"; sourceTree = "<group>"; };
 		2F3D6B851E61D0AC00CF7881 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		2FC6C46B1E60B542005539F5 /* Wclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,10 +71,9 @@
 		733239741F53094800E9AC7B /* ProjectDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsTableViewController.swift; sourceTree = "<group>"; };
 		733239751F53094800E9AC7B /* ProjectDetailsViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewRouter.swift; sourceTree = "<group>"; };
 		7332397A1F5315C700E9AC7B /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
-		7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchApiPhotosRequest.swift; sourceTree = "<group>"; };
+		7333A3E91F5ACFEB00996C84 /* SearchApiProjectsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchApiProjectsRequest.swift; sourceTree = "<group>"; };
 		7333A3EB1F5AD45F00996C84 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		734AF5E51FAEEC4F00C7099B /* ProjectsFeaturedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsFeaturedConfigurator.swift; sourceTree = "<group>"; };
-		734AF5E71FAF287E00C7099B /* ProjectKeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectKeywordCell.swift; sourceTree = "<group>"; };
 		734BA0FE1F5C03A00006B3D4 /* CacheProjectsGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheProjectsGateway.swift; sourceTree = "<group>"; };
 		7370A2251F682B400062C4F9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		737FF4101F585CF3007329B2 /* SearchProjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProjects.swift; sourceTree = "<group>"; };
@@ -90,11 +87,8 @@
 		739D8A201FAD87E3000B279B /* ProjectsFeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsFeaturedViewController.swift; sourceTree = "<group>"; };
 		739D8A221FAD8998000B279B /* ProjectsFeaturedViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsFeaturedViewRouter.swift; sourceTree = "<group>"; };
 		739D8A241FAD8A3B000B279B /* ProjectsFeaturedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsFeaturedPresenter.swift; sourceTree = "<group>"; };
-		739D8A291FADC43B000B279B /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
-		ACE2C8C3185F48745A2137E6 /* Pods_PhotoViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBD8C620E323027218663634 /* Pods-PhotoViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.release.xcconfig"; sourceTree = "<group>"; };
+		73BFFFB61FD8DCEF0000080B /* ProjectKeywordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectKeywordCell.swift; sourceTree = "<group>"; };
 		C5E50CFCBAB583326DF4310C /* Pods-Wclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wclient/Pods-Wclient.release.xcconfig"; sourceTree = "<group>"; };
-		F4BF3485FCC1F67DEBBB4957 /* Pods-PhotoViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		FA7952D2699DF985DA4D1C75 /* Pods_Wclient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wclient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -120,8 +114,6 @@
 		1F51DD334DD488221415EF6A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F4BF3485FCC1F67DEBBB4957 /* Pods-PhotoViewer.debug.xcconfig */,
-				BBD8C620E323027218663634 /* Pods-PhotoViewer.release.xcconfig */,
 				56FC9D5A25A28325A7881D0E /* Pods-Wclient.debug.xcconfig */,
 				C5E50CFCBAB583326DF4310C /* Pods-Wclient.release.xcconfig */,
 			);
@@ -200,7 +192,6 @@
 				2F3D6B7F1E61A37400CF7881 /* UIViewController-Alert.swift */,
 				738F74491F5A936900C2D586 /* UIImageView+CacheFromUrl.swift */,
 				7370A2251F682B400062C4F9 /* Constants.swift */,
-				739D8A291FADC43B000B279B /* UIColor+Hex.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -267,7 +258,7 @@
 		2FC6C4B51E60B766005539F5 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				7333A3E91F5ACFEB00996C84 /* SearchApiPhotosRequest.swift */,
+				7333A3E91F5ACFEB00996C84 /* SearchApiProjectsRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -291,7 +282,7 @@
 				733239731F53094800E9AC7B /* ProjectDetailsPresenter.swift */,
 				733239751F53094800E9AC7B /* ProjectDetailsViewRouter.swift */,
 				733239721F53094800E9AC7B /* ProjectDetailsConfigurator.swift */,
-				734AF5E71FAF287E00C7099B /* ProjectKeywordCell.swift */,
+				73BFFFB61FD8DCEF0000080B /* ProjectKeywordCell.swift */,
 			);
 			name = "Project Details";
 			sourceTree = "<group>";
@@ -327,8 +318,6 @@
 		CB107EF4A48C0E27C185BAE2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				22C9B2CDA63A29FC8790DB88 /* Pods_Library.framework */,
-				ACE2C8C3185F48745A2137E6 /* Pods_PhotoViewer.framework */,
 				FA7952D2699DF985DA4D1C75 /* Pods_Wclient.framework */,
 			);
 			name = Frameworks;
@@ -505,12 +494,11 @@
 				739D8A211FAD87E3000B279B /* ProjectsFeaturedViewController.swift in Sources */,
 				7332397B1F5315C700E9AC7B /* ProjectCollectionViewCell.swift in Sources */,
 				737FF4111F585CF3007329B2 /* SearchProjects.swift in Sources */,
-				7333A3EA1F5ACFEB00996C84 /* SearchApiPhotosRequest.swift in Sources */,
+				7333A3EA1F5ACFEB00996C84 /* SearchApiProjectsRequest.swift in Sources */,
 				739D8A231FAD8998000B279B /* ProjectsFeaturedViewRouter.swift in Sources */,
 				733239761F53094800E9AC7B /* ProjectDetailsConfigurator.swift in Sources */,
 				733239651F52C39900E9AC7B /* ProjectResultsPresenter.swift in Sources */,
 				2FC6C46F1E60B542005539F5 /* AppDelegate.swift in Sources */,
-				734AF5E81FAF287E00C7099B /* ProjectKeywordCell.swift in Sources */,
 				7370A2261F682B400062C4F9 /* Constants.swift in Sources */,
 				2F3D6B861E61D0AC00CF7881 /* ApiClient.swift in Sources */,
 				733239791F53094800E9AC7B /* ProjectDetailsViewRouter.swift in Sources */,
@@ -518,13 +506,13 @@
 				7333A3EC1F5AD45F00996C84 /* ApiRequest.swift in Sources */,
 				2FC6C4A31E60B65E005539F5 /* Result.swift in Sources */,
 				739827F11F56EDDD00730BE6 /* Project.swift in Sources */,
+				73BFFFB71FD8DCEF0000080B /* ProjectKeywordCell.swift in Sources */,
 				739D8A251FAD8A3B000B279B /* ProjectsFeaturedPresenter.swift in Sources */,
 				2F3D6B801E61A37400CF7881 /* UIViewController-Alert.swift in Sources */,
 				739827EF1F56EC7A00730BE6 /* ProjectsGateway.swift in Sources */,
 				2FC6C4981E60B5C4005539F5 /* ViewRouter.swift in Sources */,
 				733239781F53094800E9AC7B /* ProjectDetailsTableViewController.swift in Sources */,
 				738F744A1F5A936900C2D586 /* UIImageView+CacheFromUrl.swift in Sources */,
-				739D8A2A1FADC43B000B279B /* UIColor+Hex.swift in Sources */,
 				734BA0FF1F5C03A00006B3D4 /* CacheProjectsGateway.swift in Sources */,
 				733239671F52CA6700E9AC7B /* ProjectResultsViewRouter.swift in Sources */,
 				733239691F53037700E9AC7B /* ProjectResultsConfigurator.swift in Sources */,
